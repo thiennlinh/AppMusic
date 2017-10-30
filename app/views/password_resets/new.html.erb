@@ -1,0 +1,23 @@
+<% provide(:title, "Forgot password") %>
+
+
+<div class="row row_margin">
+    <div class="col s10 offset-s1">
+        <div class="content_card z-depth-1">
+
+            <div class="content_header">
+                Forgot password
+            </div>
+
+            <div class="content_body">
+                <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+
+                <%= f.submit "Submit", class: "btn blue-grey" %>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
