@@ -25,6 +25,17 @@ module SessionsHelper
         end
     end
 
+    # Returns the user corresponding to the remember token cookie.
+    def current_user_name
+        if (user_id = session[:user_id])
+            @current_user ||= User.find_by(id: user_id)
+            return @current_user.name
+        else
+            return Nill
+        
+        end
+    end
+
     # Returns true if the user is logged in, false otherwise.
     def logged_in?
         !current_user.nil?

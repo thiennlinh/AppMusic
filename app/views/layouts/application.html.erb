@@ -9,42 +9,73 @@
   </head>
 
   <body>
+	<main class="grey lighten-4">
+		<nav>
+			<div class="header">
+				<div class="title_box z-depth-2">
+					<div class="title_text">SoundIt!</div>
+				</div>  
 
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+				<% if !logged_in? %>
+					<%= form_for(:session, url: login_path) do |f| %>
+					<div class="login_box small_input hide-on-med-and-down">
+							<div class="login_components">
+								<%= f.email_field :email, class: 'small_input inline', placeholder: 'Email'%>
+								<%= f.password_field :password, class: 'small_input inline', placeholder: 'Password' %>
+							</div>
+							<div class="login_submit">
+      								<%= f.submit "Log in", class: "login_small inline z-depth-1" %>
+							</div>
+					</div>	
+					<% end %>
+				<% else %>
+					<div class="logged_in hide-on-med-and-down">
+						Welcome,  <%= link_to current_user_name, current_user %>. 
+					</div>
+				<% end %>
 
-        <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+				<div class="nav_box z-depth-3 hide-on-med-and-down">
+					<ul id="nav-mobile" class="left hide-on-med-and-down">
+						<li><%= link_to "Home", root_path %></li>
+						<li><%= link_to "About", about_path %></li>
+					</ul>
 
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<% if logged_in? %>
+							<li><%= link_to "Users", users_path %></li>
+							<li><%= link_to "Profile", current_user %></li>
+							<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+							<li><%= link_to "Log out", logout_path, method: :delete %></li>
+						<% else %>
+							<li><%= link_to "Sign Up", signup_path %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</nav>	
 
-  <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+		<div id="container">
+			<% flash.each do |message_type, message| %>
+				<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+			<% end %>
+
+			<%= yield %>
+		</div>
+	</main>
+
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col s16">
+					<%= debug(params) if Rails.env.development? %>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2017 Quablex
+			</div>
+		</div>
+	</footer>
   </body>
 </html>
