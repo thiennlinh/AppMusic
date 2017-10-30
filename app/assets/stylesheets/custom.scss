@@ -78,10 +78,29 @@
     
   }
 
+  .content_card_narrow {
+    padding: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    display: block;
+    border-radius: 2px;
+    background-color: #ffffff;
+    
+  }
+
   .content_header {
     font-size: 25px;
     padding-top: 10px;
     padding-left: 20px;
+    display: block;
+    width: 100%
+  }
+
+  .content_header_narrow {
+    font-size: 25px;
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
     display: block;
     width: 100%
   }
