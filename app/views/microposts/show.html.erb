@@ -1,0 +1,50 @@
+
+
+<div class="row row_margin">
+    <div class="col s2 content_card z-depth-1">
+        <div class="content_header_narrow">
+            Communities
+        </div>
+        Community information and other content will go here.
+        <br><br>Eventually this will need to be rendered in a shared form
+        <br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+    </div>
+
+    <div class="col s9">
+        <div class="row">
+            <div class="col s1">
+                Upvote<br>
+                <%= @micropost.score.to_i %><br>
+                Downvote<br>
+            </div>
+            <div class="col s11 content_card z-depth-1">
+
+                <div class="content_header_narrow">
+                    <%= @micropost.title %>
+                </div>
+                <div>
+                    <b>Submitted by: </b> <%= @user.name %>
+                </div>
+                <div>
+                    <b>Genre: </b> <%= @micropost.genre %>
+                </div> 
+
+                <div> 
+                    <b>Submission Statement: </b>
+                    <%= @micropost.content %>
+                </div>
+
+                <div>
+                    <br>
+                    <b>DEV NOTE: </b> RENDER VIDEO HERE!
+
+                </div>
+
+                
+            </div>
+                
+        </div>
+    </div>
+</div>
