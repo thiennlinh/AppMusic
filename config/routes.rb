@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :microposts,          only: [:new, :create, :destroy]
+
+  get '/new', to: 'microposts#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

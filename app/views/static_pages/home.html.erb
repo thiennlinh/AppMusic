@@ -10,9 +10,43 @@
                 Find me in app/views/static_pages/home.html.erb<br><br>
             
                 More Content
+
             </div>
 
+
+
         </div>
+
     </div>
 </div>
 
+        <div class="row">
+            <div class="content_card col s2 offset-s1 z-depth-1">
+            
+                test
+            </div>
+            <div class="content_card col s8  z-depth-1">
+            <div class="content_header">
+                All Posts
+            </div>
+            <div class="divider"></div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+            <% if logged_in? %>
+                            <div class="row">
+                <aside class="col-md-4">
+                <section class="user_info">
+                    <%= render 'shared/user_info' %>
+                </section>
+                <section class="micropost_form">
+                    <%= render 'shared/micropost_form' %>
+                </section>
+                </aside>
+                <% end %>
