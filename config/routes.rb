@@ -15,11 +15,6 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resources :posts do
-    resources :comments
-  end
-
-
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
 
