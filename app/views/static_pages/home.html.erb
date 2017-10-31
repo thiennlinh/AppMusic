@@ -1,65 +1,113 @@
     <% if logged_in? %>
 
         <div class="row row_margin">
-            <div class="col s2 content_card z-depth-1 hide-on-med-and-down">
-                <div class="content_header_narrow">
-                    Communities
+
+            <div class="col s7 offset-s1 content_card z-depth-1">
+                <div class="content_title">
+                    What's Hot?
                 </div>
-                Communities <br><br><br><br><br><br><br><br><br>
+                <ul class="feed_listing">
+                    <%= render @feed %>
+                </ul>
             </div>
 
-            <div class="col s10">
+            <div class="col s4 hide-on-med-and-down">
                 <div class="row">
-                    <div class="col s9 content_card z-depth-1">
-
-                        <div class="content_title">
-                            What's Hot?
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
+                            Communities
                         </div>
-                    
-                        <ul class="feed_listing">
-                            <%= render @feed %>
-                        </ul>
-
+                        Information, including a genre listing will eventually go here.
+                        <br><br><br><br><br><br><br><br><br>
                     </div>
-                    <div class="col s3 content_card z-depth-1 right hide-on-med-and-down">
-                        <div class="content_header_narrow">
+                </div>
+                
+                <div class="row">
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
                             My Posts (<%= current_user.microposts.count %>)
                         </div>
+                        <br><br><Br><Br><Br><br><br><br><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
+                            Other Content
+                        </div>
+                        <br><br><Br><Br><Br><br><br><br><br>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col s12 content_card z-depth-1">
-                    <div class="content_header_narrow">
+        <div class="row hide-on-med-and-down">
+                <div class="col s10 push-s1 content_card z-depth-1">
+                    <div class="content_title">
                         Community Feature
                     </div>
+                    <div>
                     Community Feature<br><br><br><br>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
     <% else %>
         <div class="row row_margin">
 
-        <div class="col s10 offset-s1">
-        <div class="content_card z-depth-1">
-
-            <div class="content_header">
-                StaticPages#Home
+            <div class="col s7 offset-s1 content_card z-depth-1">
+                <div class="content_title">
+                    What's Hot?
+                </div>
+                <ul class="feed_listing">
+                    <%= render @feed %>
+                </ul>
             </div>
 
-            <div class="content_body">
-                Find me in app/views/static_pages/home.html.erb<br><br>
-            
-                More Content
+            <div class="col s4 hide-on-med-and-down">
+                <div class="row">
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
+                            Communities
+                        </div>
+                        Information, including a genre listing will eventually go here.
+                        <br><br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
+                            Other Content
+                        </div>
+                        <br><br><Br><Br><Br><br><br><br><br>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s10 offset-s1 content_card z-depth-1">
+                        <div class="content_sub_title">
+                            Registration Form
+                        </div>
+                        <br><br><Br><Br><Br><br><br><br><br>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+
+        <div class="row hide-on-med-and-down">
+                <div class="col s10 push-s1 content_card z-depth-1">
+                    <div class="content_title">
+                        Community Feature
+                    </div>
+                    <div>
+                    Community Feature<br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <% end %>
 

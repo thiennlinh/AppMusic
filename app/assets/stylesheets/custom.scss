@@ -74,6 +74,7 @@
   .content_card {
     display: block;
     border-radius: 2px;
+    width: 95%;
     background-color: #ffffff;
     
   }
@@ -182,4 +183,11 @@
     font-size: 45px;
     margin-left: 15px;
     margin-top: -35px;
+  }
+
+  .content_sub_title {
+    font-weight: 200;
+    font-size: 25px;
+    margin-left: 0px;
+    margin-top: -20px;
   }
