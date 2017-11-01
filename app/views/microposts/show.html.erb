@@ -38,7 +38,30 @@
 
                 <div>
                     <br>
+                    <%= current_user.id %>
                     <b>DEV NOTE: </b> RENDER VIDEO HERE!
+<h2>Comments</h2>
+<% @micropost.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @micropost, @micropost.comments.build ]) do |form| %>
+
+    <%# <% :user_id, current_user.id %> %>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 
                 </div>
 
