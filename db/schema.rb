@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101021026) do
+ActiveRecord::Schema.define(version: 20171102193626) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -28,23 +28,11 @@ ActiveRecord::Schema.define(version: 20171101021026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
-    t.decimal "score"
     t.string "title"
     t.string "genre"
     t.string "artist"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
-  end
-
-  create_table "nestcoms", force: :cascade do |t|
-    t.text "title"
-    t.text "body"
-    t.integer "users_id"
-    t.integer "microposts_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["microposts_id"], name: "index_nestcoms_on_microposts_id"
-    t.index ["users_id"], name: "index_nestcoms_on_users_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -66,6 +54,20 @@ ActiveRecord::Schema.define(version: 20171101021026) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.integer "votable_id"
+    t.string "voter_type"
+    t.integer "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
 end

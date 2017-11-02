@@ -1,9 +1,8 @@
 class MicropostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy]
+    before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote]
     
     def create
         @micropost = current_user.microposts.build(micropost_params)
-        @micropost.score = 1
         if @micropost.save
           flash[:success] = "Micropost created!"
           redirect_to root_url
@@ -17,7 +16,23 @@ class MicropostsController < ApplicationController
       @user = User.find(@micropost.user_id)
 
     end
+
+    def upvote
+      @test = "test"
+      @micropost = Micropost.find(params[:id])
+      @micropost.upvote_by current_user
+      redirect_to root_path
+    end
+
+    def downvote
+      @micropost = Micropost.find(params[:id])
+      @micropost.downvote_by current_user
+      redirect_to root_path
+    end
     
+    def score
+      self.get_upvotes.size - self.get_downvotes.size
+    end
     
       def destroy
       end

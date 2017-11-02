@@ -14,57 +14,84 @@
 
     <div class="col s9">
         <div class="row">
-            <div class="col s1">
-                Upvote<br>
-                <%= @micropost.score.to_i %><br>
-                Downvote<br>
-            </div>
+
             <div class="col s11 content_card z-depth-1">
 
-                <div class="content_header_narrow">
+                <div class="content_title_post">
                     <%= @micropost.title %>
                 </div>
-                <div>
-                    <b>Submitted by: </b> <%= @user.name %>
-                </div>
-                <div>
-                    <b>Genre: </b> <%= @micropost.genre %>
-                </div> 
-
-                <div> 
-                    <b>Submission Statement: </b>
-                    <%= @micropost.content %>
-                </div>
-
-                <div>
-                    <br>
-                    <%= current_user.id %>
-                    <b>DEV NOTE: </b> RENDER VIDEO HERE!
-<h2>Comments</h2>
-<% @micropost.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
 
 
-<h2>Add a comment:</h2>
-<%= form_with(model: [ @micropost, @micropost.comments.build ]) do |form| %>
+                <div class="row">
+                    <div class="col s2">
+                        <div class="col s1">
+                            Upvote<br>
+                            
+                            Downvote<br>
+                        </div>
+                    </div>
 
-    <%# <% :user_id, current_user.id %> %>
-
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
+                    <div class=" col s10">
+                        <div>
+                            <b>Submitted by: </b> <%= @user.name %> <br>
+                            <b>Genre: </b> <%= @micropost.genre %> <br>
+                            <b>Submission Statement: </b> <%= @micropost.content %> <br>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="row">
+                    <div clas="col s12">
+                        <b>DEV NOTE: </b> RENDER VIDEO HERE!
+                    <div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <b> Replies </b><br>
+                        <% @micropost.comments.each do |comment| %>
+                            <div class="row">
+                                <div class="col s1">
+                                    &#8593 <br>
+                                    <%= comment.score %> <br>
+                                    &#8595
+                                </div>
+                                <div class="col s11 z-depth-1">
+                                    <div class="comment">
+                                        Posted by <%= comment.user_id %> <%= time_ago_in_words(comment.created_at) %> ago.
+                                    </div>
+                                    <%= comment.body %>
+                                    <br>
+                                    <div class="comment">
+                                        <span style="text-decoration: line-through">Reply</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+
+                <% if logged_in? %>
+
+                    <div class="row">
+                        <div class="col s8">
+                            <%= form_with(model: [ @micropost, @micropost.comments.build ]) do |form| %>
+                                <%= form.hidden_field :user_id, value: current_user.id %>
+                                <%= form.hidden_field :score, value: 0 %>
+                                <%= form.text_area :body, placeholder: "Replying as " + current_user.name %>
+                                <%= form.submit %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% else %>
+
+                    <div class="row">
+                        <div class="col s8">
+                            Please log in to post a reply.
+                        </div>
+                    </div>
+
+                <% end %>
                 
             </div>
                 

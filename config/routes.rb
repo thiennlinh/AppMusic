@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts do
     resources :comments
+    member do
+      put "like", to: "microposts#upvote"
+      put "dislike", to: "microposts#downvote"
+    end
   end
 
   get '/new', to: 'microposts#new'
