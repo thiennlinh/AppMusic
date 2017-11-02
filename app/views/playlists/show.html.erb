@@ -1,0 +1,6 @@
+<h1>Playlist with id=<%= params[:id] %></h1>
+<p>Name: <%= @playlist[:name] %></p>
+
+<% @playlist.microposts.each do |post| %>
+	<p><%= post[:title] %></p>
+<% end %>

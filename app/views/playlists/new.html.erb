@@ -1,0 +1,22 @@
+<h1>New Playlist</h1>
+
+<%= form_with scope: :playlist, url: playlists_path, local: true do |form| %>
+	<p>
+		<%= form.label :name %><br>
+		<%= form.text_field :name %>
+	</p>
+
+	<p>
+		<%= form.label :micropost1 %><br>
+		<%= form.text_field :micropost1 %>
+	</p>
+
+	<p>
+		<%= form.label :micropost2 %><br>
+		<%= form.text_field :micropost2 %>
+	</p>
+
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
