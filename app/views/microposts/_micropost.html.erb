@@ -9,7 +9,7 @@
             Downvoat
         </div>
         <div class="col s10">
-            <span class="_title"><%= micropost.title %></span> <div class="chip"><%= micropost.genre %></div><br>
+            <span class="_title"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div><br>
             <span class="_details">Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
         </div>
     </div>
