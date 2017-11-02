@@ -23,15 +23,15 @@
 
 
                 <div class="row">
-                    <div class="col s2">
-                        <div class="col s1">
-                            Upvote<br>
-                            
-                            Downvote<br>
+                    <div class="col s1">
+                        <div class="col s1" style="text-align: center;">
+                            <%= link_to "↑", like_micropost_path(@micropost), method: :put %> <br>
+                            <%= @micropost.get_upvotes.size - @micropost.get_downvotes.size %><br>
+                            <%= link_to "↓", dislike_micropost_path(@micropost), method: :put %>
                         </div>
                     </div>
 
-                    <div class=" col s10">
+                    <div class="col s11">
                         <div>
                             <b>Submitted by: </b> <%= @user.name %> <br>
                             <b>Genre: </b> <%= @micropost.genre %> <br>
@@ -52,9 +52,9 @@
                         <% @micropost.comments.each do |comment| %>
                             <div class="row">
                                 <div class="col s1">
-                                    &#8593 <br>
-                                    <%= comment.score %> <br>
-                                    &#8595
+                                    <%= link_to "↑", comment_like_path(comment), method: :put %> <br>
+                                    <%= comment.get_upvotes.size - comment.get_downvotes.size %> <br>
+                                    <%= link_to "↓", comment_dislike_path(comment), method: :put %>
                                 </div>
                                 <div class="col s11 z-depth-1">
                                     <div class="comment">
@@ -77,7 +77,6 @@
                         <div class="col s8">
                             <%= form_with(model: [ @micropost, @micropost.comments.build ]) do |form| %>
                                 <%= form.hidden_field :user_id, value: current_user.id %>
-                                <%= form.hidden_field :score, value: 0 %>
                                 <%= form.text_area :body, placeholder: "Replying as " + current_user.name %>
                                 <%= form.submit %>
                             <% end %>
