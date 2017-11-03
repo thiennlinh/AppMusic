@@ -1,5 +1,5 @@
 class Micropost < ApplicationRecord
-  acts_as_votable
+  acts_as_votable cacheable_strategy: :update_columns
   has_many :comments
   belongs_to :user
   has_and_belongs_to_many :playlists

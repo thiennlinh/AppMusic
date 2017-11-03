@@ -34,8 +34,14 @@
                 <div class="row">
                     <div class="col s10 offset-s1 content_card z-depth-1">
                         <div class="content_sub_title">
-                            Other Content
+                            My Upvoted Songs
                         </div>
+                        <% @current = current_user.votes.up.for_type(Micropost) %>
+                        <% for micropost in @current %>
+                            <% @find = Micropost.find(micropost.votable_id) %>
+                            <%= link_to @find.title, @find %> by <br>
+                            <%# <%= render '/shared/micropost_skinny', collection: micropost %>
+                        <% end %>
                         <br><br><Br><Br><Br><br><br><br><br>
                     </div>
                 </div>
