@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'acts_as_votable'
-
+gem 'will_paginate',           '3.1.5'
 gem 'materialize-sass'
 
 # Use CoffeeScript for .coffee assets and views
@@ -45,7 +45,7 @@ group :development, :test do
 
   gem 'faker', '1.7.3'
 
-  gem 'will_paginate',           '3.1.5'
+  
   gem 'bootstrap-will_paginate', '1.0.0'
     # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
