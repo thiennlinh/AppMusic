@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     put "dislike", to: "comments#downvote"
   end
 
+  
+  resources :playlists
+
   get '/new', to: 'microposts#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

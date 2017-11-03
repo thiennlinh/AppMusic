@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171103000317) do
+=======
+ActiveRecord::Schema.define(version: 20171101021026) do
+>>>>>>> master
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171103000317) do
     t.integer "micropost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer "cached_votes_score", default: 0
     t.integer "cached_votes_total", default: 0
     t.integer "cached_votes_up", default: 0
@@ -32,6 +37,8 @@ ActiveRecord::Schema.define(version: 20171103000317) do
     t.index ["cached_weighted_average"], name: "index_comments_on_cached_weighted_average"
     t.index ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score"
     t.index ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total"
+=======
+>>>>>>> master
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -61,6 +68,29 @@ ActiveRecord::Schema.define(version: 20171103000317) do
     t.index ["cached_weighted_total"], name: "index_microposts_on_cached_weighted_total"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "microposts_playlists", id: false, force: :cascade do |t|
+    t.integer "playlist_id", null: false
+    t.integer "micropost_id", null: false
+  end
+
+  create_table "nestcoms", force: :cascade do |t|
+    t.text "title"
+    t.text "body"
+    t.integer "users_id"
+    t.integer "microposts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["microposts_id"], name: "index_nestcoms_on_microposts_id"
+    t.index ["users_id"], name: "index_nestcoms_on_users_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
