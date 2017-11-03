@@ -68,17 +68,6 @@ ActiveRecord::Schema.define(version: 20171103000317) do
     t.integer "micropost_id", null: false
   end
 
-  create_table "nestcoms", force: :cascade do |t|
-    t.text "title"
-    t.text "body"
-    t.integer "users_id"
-    t.integer "microposts_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["microposts_id"], name: "index_nestcoms_on_microposts_id"
-    t.index ["users_id"], name: "index_nestcoms_on_users_id"
-  end
-
   create_table "playlists", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
