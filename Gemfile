@@ -17,6 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# It looks like the interactive portions of materialize require jquery -Alex
+gem 'jquery-rails'
+
 gem 'acts_as_votable'
 gem 'will_paginate',           '3.1.5'
 gem 'materialize-sass'
@@ -45,7 +48,7 @@ group :development, :test do
 
   gem 'faker', '1.7.3'
 
-  
+
   gem 'bootstrap-will_paginate', '1.0.0'
     # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -61,7 +64,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  #gem 'pg', '0.20.0'
 end
 
 

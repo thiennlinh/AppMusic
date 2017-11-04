@@ -20,4 +20,9 @@ class PlaylistsController < ApplicationController
 			render plain: 'Failure!'
 		end
 	end
+
+	def addpost
+		@playlist = Playlist.find(params[:playlist_id])
+		@playlist.microposts << Micropost.find(params[:post_id])
+	end
 end
