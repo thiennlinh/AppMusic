@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="col s11">
-                <span class="_title_mobile"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div><br>
+                <span class="_title_mobile"><%= link_to micropost.title, micropost %></span> <br><span class="_details_mobile">By <%= micropost.artist %> </span><div class="chip"><%= micropost.genre %></div><br>
                 <span class="_details_mobile">Comments (<%= micropost.comments.count %>) | Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
             </div>
 
