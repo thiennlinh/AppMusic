@@ -8,17 +8,17 @@ you "like".
 ## About
 Soundit! was built using the rails framework and works with either a postgresql or sqlite3 database.
 
-## DEPLOYMENT
+## Deployment
 * Download from Github
 * Navigate to the repo in the terminal
 * Be sure to use Ruby 2.4.1 or newer
-* 'bundle install'
-* 'rails server'
+* `bundle install`
+* `rails server`
 * An example database has been populated and supplied on the master branch
     * Admin account uname: admin pass: admin123
     * User account: uname: user pass:user123
 
-## Project 3 Featurs
+## Project 3 Features
 
 ### Functionality
 * Ability to register/reset password and user session control
