@@ -79,6 +79,15 @@
     
   }
 
+  .content_card_mobile {
+    display: block;
+    border-radius: 2px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+  }
+
+
   .content_card_narrow {
     padding: 1px;
     padding-left: 2px;
@@ -178,6 +187,15 @@
     font-size: 12px;
   }
 
+  ._title_mobile {
+    font-weight: 100;
+    font-size: 45px;
+  }
+
+  ._details_mobile {
+    font-size: 17px;
+  }
+
   .content_title {
     font-weight: 200;
     font-size: 45px;
@@ -202,4 +220,10 @@
   .comment {
     font-size: 12px;
     font-weight: 300;
+  }
+
+  .mobile_title {
+    font-size: 45px;
+    font-weight: 100;
+    padding-left: 15px;
   }
