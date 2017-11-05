@@ -1,4 +1,6 @@
-# Soundit! ( Project 3 )
+![Soundit!](/app/assets/images/logo.png)
+
+# ( Project 3 )
 
 Do you find that media player search algorithms always are suggesting the same songs and take
 the human experience out of music? Soundit! attempts to solve this problem by blatently ripping 
@@ -11,12 +13,12 @@ Soundit! was built using the rails framework and works with either a postgresql 
 ## Deployment
 * Download from Github
 * Navigate to the repo in the terminal
-* Be sure to use Ruby 2.4.1 or newer
+    * Be sure to use Ruby 2.4.1 or newer
 * `bundle install`
 * `rails server`
 * An example database has been populated and supplied on the master branch
     * Admin account uname: admin pass: admin123
-    * User account: uname: user pass:user123
+    * User account: uname: user pass: user123
 
 ## Project 3 Features
 
@@ -28,7 +30,7 @@ Soundit! was built using the rails framework and works with either a postgresql 
     * Admin status must be set by modifying the database ( Will be fixed for proj. 4 )
 * Global playlists can be created and added to by users
 
-### Specifications
+### Models
 * Custom user model
 * Custom user sessions model
 * Custom post model
@@ -40,7 +42,11 @@ Soundit! was built using the rails framework and works with either a postgresql 
 
 ( The main goal was to roll our own whenever we can and avoid using gems )
 
-### Project 4 ( Proposed additions )
+### Sources
+* Post model adapted from [Rails Guides](http://guides.rubyonrails.org/)
+* Users and sessions adapted from [Ruby on Rails Tutorial](https://www.railstutorial.org/)
+
+## Project 4 ( Proposed additions )
 * Playlists are assigned to users, and users keep unique playlists
     * Groups of users all having modify access to to shared playlist
 * **Ability to export playlists into Spotify playlists**
@@ -49,6 +55,3 @@ Soundit! was built using the rails framework and works with either a postgresql 
 * Fully mobile design
 * More...
 
-### Sources
-* Post model adapted from [Rails Guides](http://guides.rubyonrails.org/)
-* Users and sessions adapted from [Ruby on Rails Tutorial](https://www.railstutorial.org/)
