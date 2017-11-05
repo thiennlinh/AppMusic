@@ -1,3 +1,5 @@
+Note* /rdoc is generated documentation code, /doc is sprint backlog, etc.
+
 ![Soundit!](/app/assets/images/logo.png)
 
 # ( Project 3 )
