@@ -32,7 +32,7 @@
 <li id="micropost-<%= micropost.id %>" class="hide-on-large-only">
     <div class="row content_card_mobile z-depth-1">
             <div class="col s1">
-                <div style="font-size: 20px; float: right;">
+                <div style="font-size: 24px; float: right;">
 
                     <%= link_to "↑", like_micropost_path(micropost), method: :put %> <br>
                     <%= micropost.get_upvotes.size - micropost.get_downvotes.size %><br>

@@ -189,11 +189,11 @@
 
   ._title_mobile {
     font-weight: 100;
-    font-size: 45px;
+    font-size: 65px;
   }
 
   ._details_mobile {
-    font-size: 17px;
+    font-size: 20px;
   }
 
   .content_title {
@@ -201,6 +201,13 @@
     font-size: 45px;
     margin-left: 15px;
     margin-top: -35px;
+  }
+
+  .content_title_mobile {
+    font-weight: 200;
+    font-size: 75px;
+    margin-left: 15px;
+    margin-top: -60px;
   }
 
   .content_sub_title {
@@ -223,7 +230,7 @@
   }
 
   .mobile_title {
-    font-size: 45px;
+    font-size: 65px;
     font-weight: 100;
     padding-left: 15px;
   }
