@@ -22,8 +22,13 @@
 						<li><%= link_to playlist.name, playlist_addpost_path(playlist.id, micropost.id), method: :put %></li>
 					<% end %>
 	  			</ul>
-			</div>
-            <br><span class="_details">Comments (<%= micropost.comments.count %>) | Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
+			</div><br>
+			<span class="_details">Comments (<%= micropost.comments.count %>)
+				<% if current_user?(micropost.user) %> |
+					<%= link_to "Delete Post", micropost, method: :delete, data: { confirm: "Delete this post?"}%>
+				<% end %>
+				| Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %>
+			</span>
 		</div>
     </div>
 </li>
@@ -43,7 +48,7 @@
                 <span class="_title_mobile"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div><br>
                 <span class="_details_mobile">Comments (<%= micropost.comments.count %>)
 					<% if current_user?(micropost.user) %> |
-						<%= link_to "Delete", micropost, method: :delete, data: { confirm: "Delete this post?"}%>
+						<%= link_to "Delete Post", micropost, method: :delete, data: { confirm: "Delete this post?"}%>
 					<% end %>
 					| Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
             </div>

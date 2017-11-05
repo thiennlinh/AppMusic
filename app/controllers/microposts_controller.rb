@@ -51,6 +51,12 @@ class MicropostsController < ApplicationController
 
 private
 
+	def require_permission
+		if current_user != Micropost.find(params[:id]).user
+			redirect_to root_path
+		end
+	end
+
 	def micropost_params
         params.require(:micropost).permit(:content,:title,:url,:genre, :artist)
     end
