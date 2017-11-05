@@ -11,7 +11,7 @@
         </div>
         <div class="col s11">
             <span class="_title"><%= link_to micropost.title, micropost %></span> <span class="_artist_title">By <%= micropost.artist %></span> <div class="chip"><%= micropost.genre %></div>
-            
+
 			<div class="right">
 				<!-- Dropdown Trigger -->
 				<a class='dropdown-button btn blue-grey darken-1' href='#' data-activates='dropdown1'>Add to Playlist</a>
@@ -41,7 +41,11 @@
             </div>
             <div class="col s11">
                 <span class="_title_mobile"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div><br>
-                <span class="_details_mobile">Comments (<%= micropost.comments.count %>) | Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
+                <span class="_details_mobile">Comments (<%= micropost.comments.count %>)
+					<% if current_user?(micropost.user) %> |
+						<%= link_to "Delete", micropost, method: :delete, data: { confirm: "Delete this post?"}%>
+					<% end %>
+					| Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
             </div>
 
     </div>
