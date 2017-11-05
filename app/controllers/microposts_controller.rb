@@ -38,13 +38,20 @@ class MicropostsController < ApplicationController
     	redirect_to root_path alert: "Post Deleted"
     end
 
-      def new
+    def new
         @micropost = current_user.microposts.build if logged_in?
-      end
+    end
 
-      private
+	def correct_user
+    	@micropost = Micropost.find_by(id: params[:id])  #find the post
+    	unless current_user?(@post.user)
+      	redirect_to user_path(current_user)
+    	end
+	end
 
-          def micropost_params
-            params.require(:micropost).permit(:content,:title,:url,:genre, :artist)
-          end
+private
+
+	def micropost_params
+        params.require(:micropost).permit(:content,:title,:url,:genre, :artist)
+    end
 end
