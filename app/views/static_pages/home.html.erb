@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col s10 offset-s1 content_card z-depth-1">
                             <div class="content_sub_title">
-                                My Posts (<%= current_user.microposts.count %>)
+                                My Submissions (<%= current_user.microposts.count %>)
                             </div>
                             <br><br><Br><Br><Br><br><br><br><br>
                         </div>
@@ -44,10 +44,9 @@
                             <% @current = current_user.votes.up.for_type(Micropost) %>
                             <% for micropost in @current %>
                                 <% @find = Micropost.find(micropost.votable_id) %>
-                                <%= link_to @find.title, @find %> by <br>
+                                (<%= @find.cached_votes_score %> pts) <%= link_to @find.title, @find %> by <%= @find.artist %><br>
                                 <%# <%= render '/shared/micropost_skinny', collection: micropost %>
                             <% end %>
-                            <br><br><Br><Br><Br><br><br><br><br>
                         </div>
                     </div>
                 <% end %>

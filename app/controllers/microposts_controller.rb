@@ -43,6 +43,6 @@ class MicropostsController < ApplicationController
       private
       
           def micropost_params
-            params.require(:micropost).permit(:content,:title,:url,:genre)
+            params.require(:micropost).permit(:content,:title,:url,:genre, :artist)
           end
 end

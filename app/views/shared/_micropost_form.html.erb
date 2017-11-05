@@ -2,6 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_field :title, placeholder: "Title" %>
+    <%= f.text_field :artist, placeholder: "Artist" %>
     <%= f.text_field :url, placeholder: "URL" %>
     <%= f.text_field :genre, placeholder: "Genre Tags" %>
     <%= f.text_area :content, placeholder: "Submission Statement" %>

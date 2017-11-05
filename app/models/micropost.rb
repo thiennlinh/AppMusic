@@ -9,4 +9,5 @@ class Micropost < ApplicationRecord
   validates :title, presence: true, length: { maximum: 156 }
   validates :url, presence: true
   validates :genre, presence: true
+  validates :artist, presence: true
 end
