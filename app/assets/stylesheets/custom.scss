@@ -20,7 +20,11 @@
   }
 
   .row_margin {
-    margin-top: 115px;
+    margin-top: 100px;
+  }
+
+  .row_margin_small {
+    margin-top: 50px;
   }
 
   .title_box {
@@ -85,6 +89,15 @@
     width: 100%;
     background-color: #ffffff;
     margin-bottom: 5px;
+  }
+
+  .content_card_small {
+    display: block;
+    border-radius: 2px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
   }
 
 

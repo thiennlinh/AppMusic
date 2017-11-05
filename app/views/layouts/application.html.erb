@@ -32,6 +32,9 @@
 				<% else %>
 					<div class="logged_in hide-on-med-and-down">
 						Welcome,  <%= link_to current_user_name, current_user %>. 
+						<% if current_user.admin %>
+							<span style="color: red">(Admin)</span>
+						<% end %>
 					</div>
 				<% end %>
 
@@ -69,10 +72,14 @@
 		</nav>	
 
 		<div>
-			<% flash.each do |message_type, message| %>
-				<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-			<% end %>
-
+				<div class="row row_margin">
+					<div class="col s10 offset-s1">
+						<% flash.each do |message_type, message| %>
+							<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+						<% end %>
+					</div>
+				</div>
+			
 			<%= yield %>
 		</div>
 	</main>
