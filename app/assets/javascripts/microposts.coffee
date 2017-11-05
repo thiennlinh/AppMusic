@@ -13,7 +13,6 @@ parse_youtube_id = (url) ->
 window.player = undefined
 
 window.onYouTubeIframeAPIReady = ->
-	alert 'api called'
 	vidId = parse_youtube_id $('#video-placeholder').data('url')
 	window.player = new (YT.Player)('video-placeholder',
     	width: 600
