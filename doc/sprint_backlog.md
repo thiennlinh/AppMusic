@@ -33,7 +33,7 @@
 ## Playlist - autoplay from browser
 **Description** Ability to play embedded songs and video from Soundit!
 
-## Embeded services (For music hosting other than Youtube)
+## Embeded services
 **Description** Ability for music to be embedded from Youtube
 
 
