@@ -1,69 +1,8 @@
-    <% if logged_in? %>
 
-        <div class="row row_margin ">
 
-            <div class="col l7 offset-l1 offset-m1 m10 s10 offset-s1 content_card z-depth-1">
-                <div class="content_title">
-                    What's Hot?
-                </div>
-                <ul class="feed_listing">
-                    <%= render @feed %>
-                </ul>
-            </div>
-
-            <div class="col s4 hide-on-med-and-down">
-                <div class="row">
-                    <div class="col s10 offset-s1 content_card z-depth-1">
-                        <div class="content_sub_title">
-                            Communities
-                        </div>
-                        Information, including a genre listing will eventually go here.
-                        <br><br><br><br><br><br><br><br><br>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col s10 offset-s1 content_card z-depth-1">
-                        <div class="content_sub_title">
-                            My Posts (<%= current_user.microposts.count %>)
-                        </div>
-                        <br><br><Br><Br><Br><br><br><br><br>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col s10 offset-s1 content_card z-depth-1">
-                        <div class="content_sub_title">
-                            My Upvoted Songs
-                        </div>
-                        <% @current = current_user.votes.up.for_type(Micropost) %>
-                        <% for micropost in @current %>
-                            <% @find = Micropost.find(micropost.votable_id) %>
-                            <%= link_to @find.title, @find %> by <br>
-                            <%# <%= render '/shared/micropost_skinny', collection: micropost %>
-                        <% end %>
-                        <br><br><Br><Br><Br><br><br><br><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row hide-on-med-and-down">
-                <div class="col s10 push-s1 content_card z-depth-1">
-                    <div class="content_title">
-                        Community Feature
-                    </div>
-                    <div>
-                    Community Feature<br><br><br><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <% else %>
         <div class="row row_margin">
 
-            <div class="col l7 offset-l1 offset-m1 m10 s10 offset-s1 content_card z-depth-1">
+            <div class="col l7 offset-l1 m12 s12 content_card z-depth-1 ">
                 <div class="content_title">
                     What's Hot?
                 </div>
@@ -72,8 +11,8 @@
                 </ul>
             </div>
 
-            <div class="col s4 hide-on-med-and-down">
-                <div class="row">
+            <div class="col s4">
+                <div class="row hide-on-med-and-down">
                     <div class="col s10 offset-s1 content_card z-depth-1">
                         <div class="content_sub_title">
                             Communities
@@ -82,29 +21,38 @@
                         <br><br><br><br><br><br><br><br><br>
                     </div>
                 </div>
-                
-                <div class="row">
-                    <div class="col s10 offset-s1 content_card z-depth-1">
-                        <div class="content_sub_title">
-                            Other Content
-                        </div>
-                        <br><br><Br><Br><Br><br><br><br><br>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col s10 offset-s1 content_card z-depth-1">
-                        <div class="content_sub_title">
-                            Registration Form
+                <% if logged_in? %>
+                    <div class="row">
+                        <div class="col s10 offset-s1 content_card z-depth-1">
+                            <div class="content_sub_title">
+                                My Posts (<%= current_user.microposts.count %>)
+                            </div>
+                            <br><br><Br><Br><Br><br><br><br><br>
                         </div>
-                        <br><br><Br><Br><Br><br><br><br><br>
                     </div>
-                </div>
+
+                
+                    <div class="row">
+                        <div class="col s10 offset-s1 content_card z-depth-1">
+                            <div class="content_sub_title">
+                                My Upvoted Songs
+                            </div>
+                            <% @current = current_user.votes.up.for_type(Micropost) %>
+                            <% for micropost in @current %>
+                                <% @find = Micropost.find(micropost.votable_id) %>
+                                <%= link_to @find.title, @find %> by <br>
+                                <%# <%= render '/shared/micropost_skinny', collection: micropost %>
+                            <% end %>
+                            <br><br><Br><Br><Br><br><br><br><br>
+                        </div>
+                    </div>
+                <% end %>
             </div>
         </div>
 
-        <div class="row hide-on-med-and-down">
-                <div class="col s10 push-s1 content_card z-depth-1">
+        <div class="row hide-on-small-only">
+                <div class="col s10 push-s1 content_card z-depth-1 hide-on-med-and-down">
                     <div class="content_title">
                         Community Feature
                     </div>
@@ -114,9 +62,6 @@
                 </div>
             </div>
         </div>
-
-    <% end %>
-
 
 
 
