@@ -1,4 +1,4 @@
-# Soundit! ( PROJECT 3 STATEMENT )
+# Soundit! ( Project 3 )
 
 Do you find that media player search algorithms always are suggesting the same songs and take
 the human experience out of music? Soundit! attempts to solve this problem by blatently ripping 
