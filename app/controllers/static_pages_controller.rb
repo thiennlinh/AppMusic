@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
       @posts = current_user.microposts
     end
 
-    @feed = Micropost.paginate(page: params[:page])
+    @feed = Micropost.paginate(page: params[:page], :per_page => 10)
 
   end
 

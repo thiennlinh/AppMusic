@@ -1,6 +1,4 @@
-
-
-        <div class="row row_margin">
+        <div class="row">
 
             <div class="col l7 offset-l1 m12 s12 content_card z-depth-1 ">
                 <div class="content_title hide-on-med-and-down">
@@ -11,6 +9,7 @@
                 </div>
                 <ul class="feed_listing">
                     <%= render @feed %>
+                    <%= will_paginate @feed %>
                 </ul>
             </div>
 
@@ -35,6 +34,7 @@
                             <% for micropost in @posts %>
                                 (<%= micropost.cached_votes_score %> pts) <%= link_to micropost.title, micropost %> by <%= micropost.artist %><br>
                             <% end %>
+                            
                         </div>
                     </div>
 
@@ -50,13 +50,14 @@
                                 (<%= @find.cached_votes_score %> pts) <%= link_to @find.title, @find %> by <%= @find.artist %><br>
                                 <%# <%= render '/shared/micropost_skinny', collection: micropost %>
                             <% end %>
+                            
                         </div>
                     </div>
                 <% end %>
             </div>
         </div>
 
-        <div class="row hide-on-small-only">
+        <div class="row hide-on-small-only row_margin_small">
                 <div class="col s10 push-s1 content_card z-depth-1 hide-on-med-and-down">
                     <div class="content_title">
                         Community Feature

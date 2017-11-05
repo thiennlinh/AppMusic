@@ -19,8 +19,8 @@ Soundit! was built using the rails framework and works with either a postgresql 
 * `bundle install`
 * `rails server`
 * An example database has been populated and supplied on the master branch
-    * Admin account uname: admin pass: admin123
-    * User account: uname: user pass: user123
+    * Admin account uname: admin@admin.com pass: admin123
+    * User account: uname: user@user.com pass: user123
 
 ## Project 3 Features **More can be found in the /doc backlog files, this is a public facing listing**
 
@@ -47,6 +47,7 @@ Soundit! was built using the rails framework and works with either a postgresql 
 ### Sources
 * Post model adapted from [Rails Guides](http://guides.rubyonrails.org/)
 * Users and sessions adapted from [Ruby on Rails Tutorial](https://www.railstutorial.org/)
+* [Materialize CSS](http://materializecss.com)
 
 ## Project 4 ( Proposed additions )
 * Playlists are assigned to users, and users keep unique playlists

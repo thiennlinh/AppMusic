@@ -1,28 +1,23 @@
 <% provide(:title, @user.name) %>
-  <div class="row row_margin">
-    <div class="col s10 offset-s1">
-        <div class="content_card z-depth-1">
-
-            <div class="content_header">
-                <%= @user.name %>
-            </div>
-
-            <div class="content_body">
-                <%= @user.id %><br>
-                <%= @user.email %>
-
-                  <% if @user.microposts.any? %>
-                  <div class="content_header">
-                  Posts (<%= @user.microposts.count %>)
-                  </div>
-                  <ol class="microposts">
-                    <%= render @microposts %>
-                  </ol>
-                  <%= will_paginate @microposts %>
-                <% end %>
-            </div>
-
+  <div class="row">
+    <div class="col s10 offset-s1 content_card z-depth-1">
+        <div class="content_title">
+            <%= @user.name %>
         </div>
+
+        <div class="content_body">
+
+            <% if @user.microposts.any? %>
+                <div class="content_header">
+                    Posts (<%= @user.microposts.count %>)
+                </div>
+                <ul class="microposts">
+                    <%= render @microposts %>
+                </ul>
+                <%= will_paginate @microposts %>
+            <% end %>
+        </div>
+
     </div>
 </div>
 
