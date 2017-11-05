@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-  
+
 
   resources :microposts do
 
@@ -41,8 +41,11 @@ Rails.application.routes.draw do
     put "dislike", to: "comments#downvote"
   end
 
-  
-  resources :playlists
+
+  resources :playlists do
+  	put "addpost/:post_id", to: "playlists#addpost", as: 'addpost'
+  end
+
 
   get '/new', to: 'microposts#new'
 

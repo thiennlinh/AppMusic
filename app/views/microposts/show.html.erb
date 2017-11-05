@@ -41,8 +41,10 @@
                 </div>
 
                 <div class="row">
-                    <div clas="col s12">
-                        <b>DEV NOTE: </b> RENDER VIDEO HERE!
+                    <div class="col s12">
+                        <%= content_tag(:div, "", id: "video-placeholder", data: {url: @micropost.url}) %>
+						<!-- this is gross I know -->
+						<script src="https://www.youtube.com/iframe_api"></script>
                     <div>
                 </div>
 
@@ -91,9 +93,9 @@
                     </div>
 
                 <% end %>
-                
+
             </div>
-                
+
         </div>
     </div>
 </div>

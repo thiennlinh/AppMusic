@@ -10,9 +10,21 @@
             </div>
         </div>
         <div class="col s11">
-            <span class="_title"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div><br>
+            <span class="_title"><%= link_to micropost.title, micropost %></span> <div class="chip"><%= micropost.genre %></div>
+			<div class="right">
+				<!-- Dropdown Trigger -->
+				<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Add to Playlist</a>
+
+				<!-- Dropdown Structure -->
+				<ul id='dropdown1' class='dropdown-content'>
+					<% Playlist.all.each do |playlist| %>
+						<li><%= link_to playlist.name, playlist_addpost_path(playlist.id, micropost.id), method: :put %></li>
+					<% end %>
+	  			</ul>
+			</div>
+			<br>
             <span class="_details">Comments (<%= micropost.comments.count %>) | Posted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, micropost.user %></span>
-        </div>
+		</div>
     </div>
 </li>
 
