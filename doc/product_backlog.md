@@ -1,7 +1,7 @@
 # Product Backlog
 
 ## Web User Experience
-**Description** The desktop version of Soundit! 
+**Description** The desktop version of Soundit
 **Requirement** Ongoing and throughout
 
 ## Mobile User Experience
@@ -9,11 +9,11 @@
 **Requirements** Ongoing and throughout
 
 ## Admin interfacing
-**Description** A full featured admin interface that allows for moderation of communities, posts, and users. 
+**Description** A full featured admin interface that allows for moderation of communities, posts, and users.
 **Requirements** Backend, 50% implemented, Frontend, 0% implemented with considerable effort still required
 
 ## Moderator interfacing
-**Description** Ability for moderator specified users to be able to moderate posts and comments in certain communities 
+**Description** Ability for moderator specified users to be able to moderate posts and comments in certain communities
 **Requirements** Backend, 0% implemented, Frontent, 25% implemented (Users can delete their own posts and comments)
 
 ## User Accounts
