@@ -1,4 +1,4 @@
-Note* /doc/rdoc is generated documentation code, /doc is sprint backlog, etc.
+Note* /documentation/rdoc is generated documentation code, /documentation contains sprint backlog, etc.
 
 ![Soundit!](/app/assets/images/logo.png)
 
