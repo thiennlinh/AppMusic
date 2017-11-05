@@ -22,7 +22,7 @@ Soundit! was built using the rails framework and works with either a postgresql 
     * Admin account uname: admin pass: admin123
     * User account: uname: user pass: user123
 
-## Project 3 Features
+## Project 3 Features **More can be found in the /doc backlog files, this is a public facing listing**
 
 ### Functionality
 * Ability to register/reset password and user session control
