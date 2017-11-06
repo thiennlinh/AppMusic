@@ -18,6 +18,7 @@ Soundit! was built using the rails framework and works with either a postgresql 
     * Be sure to use Ruby 2.4.1 or newer
 * `bundle install`
 * `rails server`
+* Visit the site here: [localhost:3000](localhost:3000)
 * An example database has been populated and supplied on the master branch
     * Admin account uname: admin@admin.com pass: admin123
     * User account: uname: user@user.com pass: user123
