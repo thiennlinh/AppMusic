@@ -29,6 +29,10 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
       @user = User.find(@micropost.user_id)
 
+	  regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+	  match = regex.match(@micropost.url)
+	  #if match and match[2].length == 11
+	  @embed_url = "http://youtube.com/embed/" + match[2]
     end
 
     def upvote
