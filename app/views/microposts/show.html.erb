@@ -42,9 +42,7 @@
 
                 <div class="row">
                     <div class="col s12">
-                        <%= content_tag(:div, "", id: "video-placeholder", data: {url: @micropost.url}) %>
-						<!-- this is gross I know -->
-						<script src="https://www.youtube.com/iframe_api"></script>
+                        <iframe width="600" height="400" src="<%= @embed_url %>"></iframe> 
                     <div>
                 </div>
 

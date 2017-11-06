@@ -15,9 +15,10 @@ class PlaylistsController < ApplicationController
 		end
 
 		if @playlist.save
-			render plain: 'Success!'
+			flash[:success] = "Micropost created!"
+            redirect_to root_url
 		else
-			render plain: 'Failure!'
+			render 'static_pages/home'
 		end
 	end
 

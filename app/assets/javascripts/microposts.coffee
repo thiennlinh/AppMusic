@@ -5,9 +5,10 @@
 # DISCLAIMER: The youtube embeded API is a steaming pile of dog feces, I'm doing
 #             my best here to make it work
 
-parse_youtube_id = (url) ->
-	regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
-	match = url.match(regex)
+
+#parse_youtube_id = (url) ->
+#	regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+###	match = url.match(regex)
 	if match and match[2].length == 11
 		return match[2]
 	else
@@ -31,3 +32,4 @@ window.onYouTubeIframeAPIReady = ->
 $(document).on 'turbolinks:load', ->
 	if YT?
 		render_player()
+###
