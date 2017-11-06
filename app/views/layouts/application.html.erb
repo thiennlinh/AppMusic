@@ -15,7 +15,7 @@
 				<div class="title_box z-depth-2">
 
 					<img src="/assets/logo.png">
-				</div>  
+				</div>
 
 				<% if !logged_in? %>
 					<%= form_for(:session, url: login_path) do |f| %>
@@ -27,11 +27,11 @@
 							<div class="login_submit">
 									<%= f.submit "Log in", class: "login_small inline z-depth-1" %>
 							</div>
-					</div>	
+					</div>
 					<% end %>
 				<% else %>
 					<div class="logged_in hide-on-med-and-down">
-						Welcome,  <%= link_to current_user_name, current_user %>. 
+						Welcome,  <%= link_to current_user_name, current_user %>.
 						<% if current_user.admin %>
 							<span style="color: red">(Admin)</span>
 						<% end %>
@@ -42,6 +42,7 @@
 					<ul id="nav-mobile" class="left hide-on-med-and-down">
 						<li><%= link_to "Home", root_path %></li>
 						<li><%= link_to "Submit a New Song", new_path %></li>
+						<li><%= link_to "Make a New Playlist", new_playlist_path %></li>
 						<li><%= link_to "About", about_path %></li>
 					</ul>
 
@@ -69,7 +70,7 @@
 					<li><a href="mobile.html">Mobile</a></li>
 				</ul>
 				</div>
-		</nav>	
+		</nav>
 
 		<div>
 				<div class="row row_margin">
@@ -79,7 +80,7 @@
 						<% end %>
 					</div>
 				</div>
-			
+
 			<%= yield %>
 		</div>
 	</main>
