@@ -1,0 +1,37 @@
+Team: Git Schwifty
+Team Members: Abe Dick, Qualen Pollard, Alex Shadley
+
+Meeting 10-29-17
+Times: 10AM - 12PM
+Members Present: Abe, Qualen, Alex
+Purpose: Reconvene after a week of doing research, fill in gaps of knowledge
+between teammates, assign tasks to each teammate and discuss plans for
+integration
+Meeting Notes:
+-Abe will set up system for making posts/comments
+-Alex will work on playlist system, and on having these playlists automatically
+execute in browser
+-Qualen will work on building the admin interface
+
+Meeting 11-2-17
+Times: 7PM - 9PM
+Members Present: Abe, Qualen, Alex
+Purpose: Begin to integrate each team member's contributions into one complete
+product
+Meeting Notes:
+-Having some difficulty with autoplaying playlists
+-Admin and User-side integration going well
+-Autoplayer may have to be dropped from the scope of project 3 if difficulties
+continue
+
+Meeting 11-5-17
+Times: 12PM - 5PM
+Members Present: Abe, Qualen, Alex
+Purpose: Finish integrating each portion of the project, perform final polishing
+and testing
+Meeting Notes:
+-Some stability issues with embedded videos, mostly resolved
+-Autoplayer moved to backlog of project 4
+-Admin mode now can delete posts
+-UI looks great, colors have been more closely coordinated
+-Database has been populated for demonstration purposes
