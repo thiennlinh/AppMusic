@@ -91,6 +91,21 @@
     margin-bottom: 5px;
   }
 
+  .post_card {
+    display: block;
+    border-radius: 2px;
+    width: 100%;
+    background-color: #ffffff;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 12px;
+    margin-left: 15px;
+  }
+
+  .row_smal_margin {
+    margin-bottom: 0px;
+  }
+
   .content_card_small {
     display: block;
     border-radius: 2px;
@@ -197,9 +212,22 @@
   }
 
   ._details {
+    display: block;
+    font-size: 12px;
+    margin-top: -3px;
+  }
+
+  ._details_top {
+    display: block;
+    margin-bottom: -25px;
     font-size: 12px;
   }
 
+  .add_to_list {
+    display: block;
+    margin-bottom: -25px;
+    padding-top: 17px;
+  }
   ._title_mobile {
     font-weight: 100;
     font-size: 65px;
@@ -250,4 +278,40 @@
 
 ._artist_title {
   margin-top: -5px;
+}
+
+._upvoted a {
+  color: rgb(66, 193, 66);
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+._downvoted a {
+  color: rgb(198, 0, 0);
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+._nonvoted a {
+  color: #bdbdbd;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+._diamond {
+  color: #bdbdbd;
+}
+
+._score {
+  display: block;
+  margin-top: -28px;
+  margin-bottom: -28px;
+  margin-left: 6px;
+}
+
+._score_collector {
+  font-size: 15px;
 }
