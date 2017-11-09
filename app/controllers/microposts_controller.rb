@@ -17,6 +17,8 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
       @user = User.find(@micropost.user_id)
 
+      @micropost_copy = Micropost.find(params[:id])
+
 	  regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
 	  match = regex.match(@micropost.url)
 	  #if match and match[2].length == 11
@@ -24,13 +26,13 @@ class MicropostsController < ApplicationController
     end
 
     def upvote
-      @micropost = Micropost.find(params[:id])
+      @micropost = Micropost.find(params[:micropost_id])
       @micropost.upvote_by current_user
       redirect_to root_path
     end
 
     def downvote
-      @micropost = Micropost.find(params[:id])
+      @micropost = Micropost.find(params[:micropost_id])
       @micropost.downvote_by current_user
       redirect_to root_path
     end
@@ -64,6 +66,6 @@ private
 	end
 
 	def micropost_params
-        params.require(:micropost).permit(:content,:title,:url,:genre, :artist)
+        params.require(:micropost).permit(:content,:title,:url,:genre, :artist, :community_id)
     end
 end

@@ -10,4 +10,5 @@ class Micropost < ApplicationRecord
   validates :url, presence: true
   validates :genre, presence: true
   validates :artist, presence: true
+  validates :community_id, presence: true
 end

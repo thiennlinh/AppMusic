@@ -7,24 +7,24 @@
             <div class="_score_collector">
                 <% if logged_in? %>
                     <% if current_user.voted_up_on? micropost %>
-                        <span class="_upvoted"> <%= link_to "△", like_micropost_path(micropost), method: :put %></span><br>
+                        <span class="_upvoted"> <%= link_to "△", micropost_like_path(micropost), method: :put %></span><br>
                     <% else %>
-                        <span class="_nonvoted"> <%= link_to "△", like_micropost_path(micropost), method: :put %></span> <br>
+                        <span class="_nonvoted"> <%= link_to "△", micropost_like_path(micropost), method: :put %></span> <br>
                     <% end %>
                 <% else %>
-                    <span class="_nonvoted"> <%= link_to "△", like_micropost_path(micropost), method: :put %></span> <br>
+                    <span class="_nonvoted"> <%= link_to "△", micropost_like_path(micropost), method: :put %></span> <br>
                 <% end %>
 
                 <span class="_score"><%= micropost.get_upvotes.size - micropost.get_downvotes.size %></span><br>
 
                 <% if logged_in? %>
                     <% if current_user.voted_down_on? micropost %>
-                        <span class="_downvoted"> <%= link_to "▽", dislike_micropost_path(micropost), method: :put %> </span>
+                        <span class="_downvoted"> <%= link_to "▽", micropost_dislike_path(micropost), method: :put %> </span>
                     <% else %>
-                        <span class="_nonvoted"> <%= link_to "▽", dislike_micropost_path(micropost), method: :put %></span>
+                        <span class="_nonvoted"> <%= link_to "▽", micropost_dislike_path(micropost), method: :put %></span>
                     <% end %>
                 <% else %>
-                    <span class="_nonvoted"> <%= link_to "▽", dislike_micropost_path(micropost), method: :put %></span>
+                    <span class="_nonvoted"> <%= link_to "▽", micropost_dislike_path(micropost), method: :put %></span>
                 <% end %>
             </div>
         </div>
@@ -59,9 +59,9 @@
             <div class="col s1">
                 <div style="font-size: 24px; float: right;">
 
-                    <%= link_to "↑", like_micropost_path(micropost), method: :put %> <br>
+                    <%= link_to "↑", micropost_like_path(micropost), method: :put %> <br>
                     <%= micropost.get_upvotes.size - micropost.get_downvotes.size %><br>
-                    <%= link_to "↓", dislike_micropost_path(micropost), method: :put %>
+                    <%= link_to "↓", micropost_dislike_path(micropost), method: :put %>
                 </div>
             </div>
             <div class="col s11">

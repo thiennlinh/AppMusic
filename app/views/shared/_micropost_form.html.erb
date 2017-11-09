@@ -6,6 +6,7 @@
     <%= f.text_field :url, placeholder: "URL" %>
     <%= f.text_field :genre, placeholder: "Genre Tags" %>
     <%= f.text_area :content, placeholder: "Submission Statement" %>
+    <%= f.hidden_field :community_id, value: 1 %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

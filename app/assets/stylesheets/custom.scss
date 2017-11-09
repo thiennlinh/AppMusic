@@ -83,6 +83,19 @@
     
   }
 
+  .dark_card {
+    display: block;
+    border-radius: 2px;
+    width: 95%;
+    background-color: #121212;
+    
+  }
+
+  .reply_card {
+    display: block;
+    width: 95%; 
+  }
+
   .content_card_mobile {
     display: block;
     border-radius: 2px;
@@ -104,6 +117,10 @@
 
   .row_smal_margin {
     margin-bottom: 0px;
+  }
+
+  .row_med_margin {
+    margin-bottom: 8px;
   }
 
   .content_card_small {
@@ -217,9 +234,23 @@
     margin-top: -3px;
   }
 
+  ._details_reply {
+    display: block;
+    font-size: 12px;
+    margin-top: -3px;
+    margin-bottom: 5px;
+  }
+
   ._details_top {
     display: block;
     margin-bottom: -25px;
+    font-size: 12px;
+  }
+
+  ._details_top_reply {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: -20px;
     font-size: 12px;
   }
 

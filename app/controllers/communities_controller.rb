@@ -15,6 +15,11 @@ class CommunitiesController < ApplicationController
         @community = Community.new
     end
 
+    def index
+        @community = Community.find(1)
+        @feed = Micropost.all.paginate(page: params[:page], :per_page => 10)
+    end
+
     private
 
         def comm_params
