@@ -20,6 +20,7 @@
 
             <div class="col s12">
                 <%# Title %>
+                
                 <div class="content_title_post">
                     <%= @micropost.title %> (<%= @micropost.artist %>)
                 </div>
@@ -80,17 +81,16 @@
                 <br>
 
                 <%# Rendering of Video %>
+                <span class="_title"> Watch</span>
                 <div class="row dark_card z-depth-2">
                     <div class="col s12">
                         <center><iframe width="560" height="315" src="<%= @embed_url %>" style="border: 0px;"></iframe></center>
                     </div>
                 </div>
 
-                <br>
-
                 <%# Comment Box %>
                 <% if logged_in? %>
-
+                    <span class="_title"> Add a Comment</span>    
                     <div class="row reply_card">
                         <div class="col s8 ">
                             <%= form_with(model: [ @micropost_copy, @micropost_copy.comments.build ]) do |form| %>
@@ -109,8 +109,6 @@
                     </div>
 
                 <% end %>
-
-                <br>
 
                 <%# comments section%>
                 <div class="row">
