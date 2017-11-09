@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col s10 offset-s1 content_card z-depth-1">
+
+            <div class="content_title">
+                Create New Community
+            </div>
+
+            <div class="content_body">
+                <% if logged_in? %>
+                    <%= render 'shared/community_form' %>
+                <% else %>
+                    Please <%= link_to "Login first. ", login_path %>
+                <% end %>
+
+            </div>
+
+        </div>
+    </div>
+</div>

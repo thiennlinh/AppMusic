@@ -1,18 +1,6 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote]
 
-
-    def create
-        @micropost = current_user.microposts.build(micropost_params)
-        if @micropost.save
-          flash[:success] = "Micropost created!"
-          redirect_to root_url
-        else
-          render 'static_pages/home'
-        end
-	end
-
-
 	def create
 		if logged_in?
 			@micropost = current_user.microposts.build(micropost_params)

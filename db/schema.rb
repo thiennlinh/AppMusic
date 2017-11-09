@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103000317) do
+ActiveRecord::Schema.define(version: 20171109012900) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20171103000317) do
     t.index ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total"
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
   end
 
   create_table "microposts", force: :cascade do |t|
