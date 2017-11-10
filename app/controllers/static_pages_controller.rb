@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
       @posts = current_user.microposts
     end
 
-    @feed = Micropost.paginate(page: params[:page], :per_page => 5)
+    @feed = Micropost.paginate(page: params[:page], :per_page => 7)
     
     #  Make sure to only collect 3 records using whatever method!
     @community_listings = []
@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
       @community_names.append(Community.where(id: id).select(:title, :id))
       @community_listings.push(Micropost.where(community_id: id).limit(5))
     end
+
+    @communities = Community.all
+
+    @playlists = Playlist.all
 
   end
 

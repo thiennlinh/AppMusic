@@ -228,10 +228,23 @@
     font-size: 25px;
   }
 
+  ._title_small_margin {
+    font-weight: 100;
+    display: block;
+    font-size: 25px;
+    margin-top: -30px;
+  }
+
   ._details {
     display: block;
     font-size: 12px;
     margin-top: -3px;
+  }
+
+  ._details_trend {
+    display: block;
+    font-size: 12px;
+    margin-top: 0px;
   }
 
   ._details_reply {
@@ -247,11 +260,23 @@
     font-size: 12px;
   }
 
+  ._details_top_trend {
+    display: block;
+    margin-bottom: -20px;
+    font-size: 14px;
+  }
+
   ._details_top_reply {
     display: block;
     margin-top: 5px;
     margin-bottom: -20px;
     font-size: 12px;
+  }
+
+
+  ._view_all {
+    font-size: 12px;
+    margin-top: -50px;
   }
 
   .add_to_list {
