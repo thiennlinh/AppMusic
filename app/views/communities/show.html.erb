@@ -1,0 +1,26 @@
+<% provide(:title, @community.title) %>
+<div class="row">
+    <div class="col l10 offset-l1  m12 s12  ">
+        <div class="row">
+            <div class="col s12">
+                <div class="content_title">
+                    <%= @community.title %>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="feed_listing">
+                            <%= render @feed %>
+                            <%= will_paginate @feed %>
+
+                            <% if @feed.length == 0%>
+                                There doesn't seem to be any songs here...
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+

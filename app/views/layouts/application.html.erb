@@ -75,9 +75,11 @@
 		<div>
 				<div class="row row_margin">
 					<div class="col s10 offset-s1">
-						<% flash.each do |message_type, message| %>
-							<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-						<% end %>
+						<blockquote>
+							<% flash.each do |message_type, message| %>
+								<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+							<% end %>
+						</blockquite>
 					</div>
 				</div>
 

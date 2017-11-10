@@ -11,6 +11,11 @@ class CommunitiesController < ApplicationController
         end
     end
 
+    def show
+        @community = Community.find(params[:id])
+        @feed = Micropost.where(community_id: @community.id).paginate(page: params[:page], :per_page => 15)
+    end
+
     def new
         @community = Community.new
     end
@@ -18,7 +23,15 @@ class CommunitiesController < ApplicationController
     def index
         @community = Community.find(1)
         @feed = Micropost.all.paginate(page: params[:page], :per_page => 10)
-    end
+
+            #  Make sure to only collect 3 records using whatever method!
+        @community_listings = []
+            @community_names = []
+            for id in 1..Community.count
+            @community_names.append(Community.where(id: id).select(:title, :id))
+            @community_listings.push(Micropost.where(community_id: id).limit(8))
+            end
+        end
 
     private
 
