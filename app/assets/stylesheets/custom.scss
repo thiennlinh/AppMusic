@@ -33,7 +33,11 @@
     float: left;
     height: 100px;
     width: 100%;
-    background-color: $primary-color;
+    background-image: url("/assets/bar.png");
+    background-repeat: no-repeat;
+    background-color: #98af45;
+    // outline: 1px solid #7c4dff;
+    // outline-offset: -6px;
   }
 
   .nav_box {
@@ -42,6 +46,7 @@
     z-index: -5;
     height: 45px;
     width: 75%;
+    // background-image: url("/assets/nav.png");
     background-color: $secondary-color;
     margin-top: -30px;
     border-radius: 5px 0px 0px 5px;
@@ -431,4 +436,12 @@
   padding-top: 3px;
   padding-bottom: 3px;
   font-size: 14px;
+}
+
+.vignette {
+
+
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 100px rgba(116, 116, 116, 0.9) inset;
 }

@@ -5,7 +5,8 @@ $navbar-height: 45px;
 $navbar-line-height: $navbar-height;
 
 
-$primary-color: color("blue-grey", "darken-2") ;
+// $primary-color: #202020 ;
+$primary-color: #98af45 ;
 $primary-color-light: false !default;
 $primary-color-dark: false !default;
 @if not $primary-color-light {
@@ -14,14 +15,14 @@ $primary-color-dark: false !default;
 @if not $primary-color-dark {
   $primary-color-dark: darken($primary-color, 15%);
 }
-$secondary-color: #607d8b;
+$secondary-color: #363636 ;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: #98af45;
 
 
 $footer-font-color: #fff !default;
-$footer-bg-color: color("blue-grey", "darken-3");
+$footer-bg-color: $secondary-color;
 $footer-copyright-font-color: rgba(255,255,255,.8) !default;
-$footer-copyright-bg-color: color("blue-grey", "darken-4");
+$footer-copyright-bg-color: #98af45;
