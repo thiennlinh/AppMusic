@@ -1,13 +1,13 @@
 <% provide(:title, @community.title) %>
 <div class="row">
-    <div class="col l10 offset-l1  m12 s12  ">
+    <div class="col l8 m12 s12  ">
         <div class="row">
             <div class="col s12">
-                <div class="content_title">
-                    <%= @community.title %>
-                </div>
                 <div class="row">
                     <div class="col s12">
+                        <div class="content_title">
+                            <%= @community.title %>
+                        </div>
                         <ul class="feed_listing">
                             <%= render @feed %>
                             <%= will_paginate @feed %>
@@ -19,6 +19,38 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="col l4">
+        <div class="row">
+            <div class="col s12">
+
+                <div class="row ">
+                    <div class="_title">
+                        Community Details
+                    </div>
+                    <div class="col s12 content_card z-depth-1">
+                            <% if logged_in? %>
+                                <% if current_user.voted_up_on? @community %>
+                                    <span class="_upvoted_com"> <%= link_to "Currently in my list", community_like_path(@community), method: :put %></span>
+                                    <span class="_nonvoted_com"> <%= link_to " | Remove?", community_dislike_path(@community), method: :put %></span>
+                                <% else %>
+                                    <span class="_nonvoted_com"> <%= link_to "Add to my list", community_like_path(@community), method: :put %></span>
+                                <% end %>
+                            <% else %>
+                                <span class="_nonvoted_com"> <%= link_to "Login to add to your list", login_path %></span>
+                            <% end %>
+                            <br>
+                            Creation Date: <%= time_ago_in_words(@community.created_at) %> ago
+                            <br>
+                            Description:
+                            <br>
+                            Moderators: 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

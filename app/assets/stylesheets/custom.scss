@@ -383,6 +383,26 @@
   font-weight: 100;
 }
 
+._upvoted_com a {
+  color: rgb(66, 193, 66);
+  font-weight: 100;
+  font-size: 20px;
+
+}
+
+._downvoted_com a {
+  color: rgb(198, 0, 0);
+  font-weight: 100;
+  font-size: 20px;
+
+}
+
+._nonvoted_com a {
+  color: #bdbdbd;
+  font-weight: 100;
+  font-size: 20px;
+}
+
 ._diamond {
   color: #bdbdbd;
 }
@@ -396,6 +416,11 @@
 
 ._score_trend {
   font-weight: 300;
+}
+
+._score_com {
+  font-weight: 300;
+  font-size: 20px;
 }
 
 ._score_collector {
