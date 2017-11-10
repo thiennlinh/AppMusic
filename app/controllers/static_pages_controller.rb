@@ -16,9 +16,8 @@ class StaticPagesController < ApplicationController
       @community_listings.push(Micropost.where(community_id: id).limit(5))
     end
 
-    @communities = Community.all
-
-    @playlists = Playlist.all
+    @communities = Community.all.limit(7)
+    @playlists = Playlist.all.limit(7)
 
   end
 

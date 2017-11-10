@@ -7,11 +7,11 @@
                             ↗Trending
                         </div>
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col m12 s12">
                                 <div class="row">
                                     <% @count = 0 %>
                                     <% for post in @community_listings %>
-                                        <div class="col s4"> 
+                                        <div class="col l4 m12 s12"> 
                                             <span class="_title"><%= link_to @community_names[@count].first.title, @community_names[@count].first %></span>
                                             <div class="row">
                                                 <div class="col s12 content_card z-depth-1">
