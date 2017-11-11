@@ -1,10 +1,10 @@
         <div class="row">
 
-            <div class="col l8  m12 s12  ">
+            <div class="col l10 offset-l1  m12 s12  ">
                 <div class="row">
                     <div class="col s12">
                         <div class="content_title">
-                            ↗Trending
+                            <i class="material-icons" style="font-size: 35px">trending_up</i>Trending Communities
                         </div>
                         <div class="row">
                             <div class="col m12 s12">
@@ -12,7 +12,12 @@
                                     <% @count = 0 %>
                                     <% for post in @community_listings %>
                                         <div class="col l4 m12 s12"> 
-                                            <span class="_title"><%= link_to @community_names[@count].first.title, @community_names[@count].first %></span>
+                                            <span class="_title"> <%= link_to @community_names[@count].first.title, @community_names[@count].first %>  <span class="_nonvoted_trend">
+                                            
+                                            <%= link_to community_like_path(@community_names[@count].first), method: :put, class: "item-over" do %>
+                                                <i class='material-icons' style='font-size: 15px'>add_box</i>
+                                            <% end %>    
+                                            </span></span>
                                             <div class="row">
                                                 <div class="col s12 content_card z-depth-1">
                                                     <span class="_details_top_trend">Top Tracks</span><br>
@@ -40,7 +45,7 @@
                                                                         <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
                                                                     <% end %>
                                                                     
-                                                                    <%= each.title %> by <%= each.artist %>
+                                                                    <%= link_to each.title, each %> by <%= each.artist %> <i class="material-icons right" style="font-size: 16px">playlist_add</i>
                                                                 </td>
                                                             </tr>
                                                         <% end %>
@@ -65,7 +70,7 @@
                 <div class="row">
                     <div class="col s12">
                         <div class="content_title_small_margin">
-                            Tracks
+                            <i class="material-icons" style="font-size: 35px">graphic_eq</i>Top Tracks
                         </div>
                         <ul class="feed_listing">
                             <%= render @feed %>
@@ -73,99 +78,72 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <div class="col s4">
-                <div class="row hide-on-med-and-down">
-                    <div class="col s12">
-                        <div class="_title">
-                            Communities
-                        </div>
-                        <div class="row">
-                            <div class="col s12 content_card_small z-depth-1">
-                                <span class="_details_top_trend">Most Popular</span><br>
-                                <table class="bordered highlight">
-                                    <% for com in @communities %>
-                                        <tr>
-                                            <td class="fp_song_title"><%= link_to com.title, com %> </td>
-                                        </tr>
-                                    <% end %>
-                                </table>
-                                <span class="_details_trend right"><%= link_to "More...", current_user %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row hide-on-med-and-down">
-                    <div class="col s12">
-                        <div class="_title_small_margin">
-                            Playlists
-                        </div>
-                        <div class="row">
-                            <div class="col s12 content_card_small z-depth-1">
-                                <span class="_details_top_trend">Most Popular</span><br>
-                                <table class="bordered highlight">
-                                    <% for play in @playlists %>
-                                        <tr>
-                                            <td class="fp_song_title"><%= link_to play.name, play %> </td>
-                                        </tr>
-                                    <% end %>
-                                </table>
-                                <span class="_details_trend right"><%= link_to "More...", current_user %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <% if logged_in? %>
-                    <div class="row hide-on-med-and-down">
+                    <div class="row">
                         <div class="col s12">
-                            <div class="_title_small_margin">
-                                My Posts (<%= current_user.microposts.count %>)
+                            <div class="content_title">
+                                <i class="material-icons" style="font-size: 35px">account_box</i>My Content
                             </div>
                             <div class="row">
-                                <div class="col s12 content_card_small z-depth-1">
-                                
-                                    <table class="bordered highlight">
-                                        <% for micropost in @posts %>
-                                            <tr>
-                                                <td class="fp_song_title"><span class="_nonvoted_trend"><%= micropost.cached_votes_score %> pts</span> <%= link_to micropost.title, micropost %> by <%= micropost.artist %></td>
-                                            </tr>
-                                        <% end %>
-                                    </table>
-                                    <span class="_details_trend right"><%= link_to "More...", current_user %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                <div class="col m12 s12">
+                                    <div class="row">
 
-                    <div class="row hide-on-med-and-down">
-                        <div class="col s12">
-                            <div class="_title_small_margin">
-                                My Upvoted Songs
-                            </div>
-                            <div class="row">
-                                <div class="col s12 content_card_small z-depth-1">
-                                    <table class="bordered highlight">
-                                        <% @current = current_user.votes.up.for_type(Micropost) %>
-                                        <% for micropost in @current %>
-                                            <tr>
-                                                <td class="fp_song_title">
-                                                    <% @find = Micropost.find(micropost.votable_id) %>
-                                                    <span class="_nonvoted_trend"><%= @find.cached_votes_score %> pts</span> <%= link_to @find.title, @find %> by <%= @find.artist %>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </table>
-                                    <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                            <div class="col l4 m12 s12"> 
+                                                <span class="_title"> @Title </span>
+                                                <div class="row">
+                                                    <div class="col s12 content_card z-depth-1">
+                                                        @concent
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col l4 m12 s12"> 
+                                                <span class="_title"> My Posts (<%= current_user.microposts.count %>) </span>
+                                                <div class="row">
+                                                    <div class="col s12 content_card z-depth-1">
+                                                        <table class="bordered highlight">
+                                                            <% for micropost in @posts %>
+                                                                <tr>
+                                                                    <td class="fp_song_title"><span class="_nonvoted_trend"><%= micropost.cached_votes_score %> pts</span> <%= link_to micropost.title, micropost %> by <%= micropost.artist %></td>
+                                                                </tr>
+                                                            <% end %>
+                                                        </table>
+                                                        <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col l4 m12 s12"> 
+                                                <span class="_title"> My Upvoted Songs </span>
+                                                <div class="row">
+                                                    <div class="col s12 content_card z-depth-1">
+                                                        <table class="bordered highlight">
+                                                            <% @current = current_user.votes.up.for_type(Micropost) %>
+                                                            <% for micropost in @current %>
+                                                                <tr>
+                                                                    <td class="fp_song_title">
+                                                                        <% @find = Micropost.find(micropost.votable_id) %>
+                                                                        <span class="_nonvoted_trend"><%= @find.cached_votes_score %> pts</span> <%= link_to @find.title, @find %> by <%= @find.artist %>
+                                                                    </td>
+                                                                </tr>
+                                                            <% end %>
+                                                        </table>
+                                                        <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
                     </div>
                 <% end %>
+
+
             </div>
+
         </div>
-
-
-
