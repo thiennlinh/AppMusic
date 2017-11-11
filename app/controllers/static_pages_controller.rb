@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
     @community_names = []
     for id in 2..4
       @community_names.append(Community.where(id: id).select(:title, :id))
-      @community_listings.push(Micropost.where(community_id: id).limit(5))
+      @community_listings.push(Micropost.where(community_id: id).limit(3))
     end
 
     @communities = Community.all.limit(7)

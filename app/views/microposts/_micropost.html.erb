@@ -1,6 +1,8 @@
 <li id="micropost-<%= micropost.id %>" class="post_card z-depth-1">
     <div class="row row_smal_margin">
-        <div class="col s11" style="max-width: 30px">
+
+
+        <div class="col s1" style="max-width: 30px">
 
             <div class="_score_collector">
                 <% if logged_in? %>
@@ -26,7 +28,7 @@
                 <% end %>
             </div>
         </div>
-        <div class="col m9 s9">
+        <div class="col s8">
             <span class="_details_top">[<%= micropost.genre %>]</span><br>
             <span class="_title"><span class="_diamond hide">◊</span><%= link_to micropost.title, micropost %></span> <span class="_artist_title">By <%= micropost.artist %></span>
             <br><span class="_details">Comments (<%= micropost.comments.count %>)
