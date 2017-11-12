@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
+  resources :admin
+
   resources :communities do
     put "like", to: "communities#upvote"
     put "dislike", to: "communities#downvote"

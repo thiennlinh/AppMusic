@@ -33,7 +33,7 @@
 					<div class="logged_in hide-on-med-and-down">
 						Welcome,  <%= link_to current_user_name, current_user %>.
 						<% if current_user.admin %>
-							<span style="color: red">(Admin)</span>
+							<%= link_to "(Admin Panel)", admin_index_path %>
 						<% end %>
 					</div>
 				<% end %>

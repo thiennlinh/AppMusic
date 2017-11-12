@@ -1,0 +1,43 @@
+<% provide(:title, "Admin Index") %>
+
+<div class="row">
+    <div class="row">
+        <div class="col l11 offset-l1">
+            <div class="content_title">
+                <i class="material-icons" style="font-size: 35px">laptop_chromebook</i> Admin Panel
+            </div>
+        </div>
+    </div>
+    <div class="col l2 offset-l1">
+        <div class="row">
+            <div class="col s12 content_card z-depth-1">
+                <table class="bordered highlight">
+                    <thead>
+                        <tr><th class="fp_song_title">Navigation</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="fp_song_title"><%= link_to "Admin Index", admin_index_path %>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col l8">
+        <div class="row">
+            <div class="col s12 content_card z-depth-1">
+                { Some sort of statistics will be rendered here, a graph with the post frequency, etc}
+                <br><br>
+                <b>Things to add:</b><br>
+                + Ability to modify song posts,<br>
+                + Ability to modify score of posts<br>
+                + <b>Ability to modify community meta-data</b><br>
+                + -- !Delete communties<br>
+                + -- !Set moderators for communties<br>
+                + Ability to add and remove other admins<br>
+            </div>
+        </div>
+    </div>
+</div>
