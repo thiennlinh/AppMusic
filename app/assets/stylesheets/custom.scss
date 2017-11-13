@@ -285,9 +285,8 @@
   }
 
   .add_to_list {
-    display: block;
-    margin-bottom: -25px;
-    padding-top: 17px;
+
+    float: right;
   }
   ._title_mobile {
     font-weight: 100;
@@ -434,6 +433,13 @@
 
 .fp_song_title {
   padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+
+.fp_feed {
+  padding-top: 3px;
+  padding-left: 0px;
   padding-bottom: 3px;
   font-size: 14px;
 }

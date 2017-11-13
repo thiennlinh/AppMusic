@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
+  get '/spotify', to: 'static_pages#spotify'
+  get '/spotify_helper', to: 'static_pages#spotify_helper'
+  get '/auth/spotify/callback', to: 'users#spotify'
 
   get 'sessions/new'
   get 'users/new'

@@ -49,6 +49,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def spotify
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+  end
+
   private
   
     def user_params

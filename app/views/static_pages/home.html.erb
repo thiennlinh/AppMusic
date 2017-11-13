@@ -77,25 +77,44 @@
                 <div class="row">
                     <div class="col m12 s12">
                         <div class="row">
-                            <div class="col l8 m12 s12"> 
+                            <div class="col l4 m12 s12"> 
                                 <span class="_title"> Feed </span>
 
                                 <div class="row">
-                                    <div class="col s12 ">
+                                    <div class="col s12 content_card z-depth-1" style="padding-left: 2px; padding-right: 2px;">
                                         <ul class="feed_listing">
+                                            <table class="bordered highlight">
                                             <%= render @feed %>
-                                            <%= will_paginate @feed %>
+                                            </table>
                                         </ul>
+                                        <div class="right">
+                                            <%= will_paginate @feed %>
+                                        </div>
+                                        <br>
                                     </div>
                                 </div>
 
                             </div>
+
                             <div class="col l4 m12 s12"> 
-                                <span class="_title"> Listen </span>
+                                <span class="_title"> Listen on Youtube </span>
 
                                 <div class="row">
                                     <div class="col s12 content_card z-depth-1">
-                                        A playlist from spotify will  eventually go here
+                                        <b>Developer note: </b><br>
+                                        Alex, here is where your youtube render will 
+                                        be displayed
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col l4 m12 s12"> 
+                                <span class="_title"> Listen on Spotify</span>
+
+                                <div class="row">
+                                    <div class="col s12" style="padding:0px;">
+                                        <iframe src="https://open.spotify.com/embed?uri=spotify:user:1224459409:playlist:5EAbXQCZMXMLIsqKdKR25f&theme=white" width="100%" height="585px" frameborder="0" allowtransparency="true" class="z-depth-1" ></iframe>
                                     </div>
                                 </div>
                             </div>
