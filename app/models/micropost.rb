@@ -7,8 +7,6 @@ class Micropost < ApplicationRecord
   default_scope -> { order(cached_votes_score: :desc) }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :title, presence: true, length: { maximum: 156 }
-  validates :url, presence: true
-  validates :genre, presence: true
   validates :artist, presence: true
   validates :community_id, presence: true
 end

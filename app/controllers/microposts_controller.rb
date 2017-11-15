@@ -48,6 +48,7 @@ class MicropostsController < ApplicationController
 
     def new
         @micropost = current_user.microposts.build if logged_in?
+        @communities = Community.all
     end
 
 	def correct_user
@@ -66,6 +67,6 @@ private
 	end
 
 	def micropost_params
-        params.require(:micropost).permit(:content,:title,:url,:genre, :artist, :community_id)
+        params.require(:micropost).permit(:content,:title,:url,:artist,:community_id)
     end
 end

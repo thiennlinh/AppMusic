@@ -2,8 +2,6 @@
 
 <li id="micropost-<%= micropost.id %>">
 
-
-
         <div class="col l1 s1" style="max-width: 25px">
 
             <div class="_score_collector">
@@ -32,7 +30,7 @@
             
         </div>
         <div class="col l11 s11">
-            <span class="_details_top">[<%= micropost.genre %>] <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
+            <span class="_details_top">[ Posted in <%= link_to Community.find(micropost.community_id).title, community_path(micropost.community_id) %> ] <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
 
                 <!-- Dropdown Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
