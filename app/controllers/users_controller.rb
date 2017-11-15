@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-
-    @user_community = @user.get_voted Community
+    @subscriptions = @user.get_up_voted Community
+    @playlists = []
   end
 
   def index
