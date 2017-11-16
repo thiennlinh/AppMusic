@@ -19,6 +19,8 @@ class MicropostsController < ApplicationController
 
       @micropost_copy = Micropost.find(params[:id])
 
+      @top_comments = Comment.where(micropost_id: @micropost.id, parent_id: 0)
+
 	  regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
 	  match = regex.match(@micropost.url)
 	  #if match and match[2].length == 11

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115023948) do
+ActiveRecord::Schema.define(version: 20171116000742) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20171115023948) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.integer "parent_id"
     t.index ["cached_votes_down"], name: "index_comments_on_cached_votes_down"
     t.index ["cached_votes_score"], name: "index_comments_on_cached_votes_score"
     t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total"
@@ -94,6 +95,15 @@ ActiveRecord::Schema.define(version: 20171115023948) do
   create_table "playlists", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "polycoms", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
