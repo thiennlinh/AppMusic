@@ -45,7 +45,14 @@
                                                                     <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
                                                                 <% end %>
                                                                 
-                                                                <%= each.title %> by <%= each.artist %>
+                                                                <%= link_to each.title, each %> by <%= each.artist %> <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
+
+                                                                <!-- Dropdown Structure -->
+                                                                <ul id='dropdown1' class='dropdown-content'>
+                                                                    <% Playlist.all.each do |playlist| %>
+                                                                        <li><%= link_to playlist.name, playlist_addpost_path(playlist.id, each.id), method: :put %></li>
+                                                                    <% end %>
+                                                                </ul>
                                                             </td>
                                                         </tr>
                                                     <% end %>

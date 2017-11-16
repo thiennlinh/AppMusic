@@ -17,6 +17,7 @@
                             <% if logged_in? %>
                                 <%= render 'shared/community_form' %>
                             <% else %>
+                                <br>
                                 Please <%= link_to "Login first. ", login_path %>
                             <% end %>
                         </div>
