@@ -261,6 +261,7 @@
   }
 
   ._details_reply {
+    color: $primary-color;
     display: block;
     font-size: 12px;
     margin-top: -3px;
@@ -456,4 +457,26 @@
   display: inline;
   width: 50%;
   color: #bdbdbd;
+}
+
+.hidden {
+  display: none;
+}
+
+.col_mod{
+  border: 0px;
+}
+
+.col_head_mod{
+  padding: 0px;
+  border: 0px;
+}
+
+.col_bod_mod{
+  padding: 0px;
+  border: 0px;
+}
+
+.row_width {
+  width: 97%;
 }

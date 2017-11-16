@@ -72,24 +72,6 @@
                     </div>
                 </div>
 
-                <%# Comment Box %>
-                <% if logged_in? %>
-                    <span class="_title"> Add a Comment</span>    
-                    <div class="row reply_card">
-                        <div class="col s8 ">
-                            <%= render partial: "polycoms/form", locals: {commentable: @micropost_copy} %>
-                        </div>
-                    </div>
-                <% else %>
-
-                    <div class="row">
-                        <div class="col s8">
-                            Please log in to post a reply.
-                        </div>
-                    </div>
-
-                <% end %>
-
                 <div class="row">
                     <div class="col s12">
                             <div class="row row_med_margin content_card z-depth-1">
@@ -138,6 +120,24 @@
 
                     </div>
                 </div>
+
+                <%# Comment Box %>
+                <% if logged_in? %>
+                    <span class="_title"> Add a Comment</span>    
+                    <div class="row reply_card">
+                        <div class="col s8 ">
+                            <%= render partial: "polycoms/form", locals: {commentable: @micropost_copy} %>
+                        </div>
+                    </div>
+                <% else %>
+
+                    <div class="row">
+                        <div class="col s8">
+                            Please log in to post a reply.
+                        </div>
+                    </div>
+
+                <% end %>
 
             </div>
         </div>
