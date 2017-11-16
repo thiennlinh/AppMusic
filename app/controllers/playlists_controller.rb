@@ -7,13 +7,6 @@ class PlaylistsController < ApplicationController
 	def create
 		@playlist = Playlist.new({:name => params[:playlist][:name]})
 
-		if params[:playlist][:micropost1]
-			@playlist.microposts << Micropost.find(params[:playlist][:micropost1])
-		end
-		if params[:playlist][:micropost2]
-			@playlist.microposts << Micropost.find(params[:playlist][:micropost2])
-		end
-
 		if @playlist.save
 			flash[:success] = "Micropost created!"
             redirect_to root_url
