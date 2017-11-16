@@ -10,8 +10,8 @@ class PolycomsController < ApplicationController
     end
 
     def update
-        @micropost = Micropost.find(params[:micropost_id])
-        @comment = @micropost.comments.find(params[:comment_id])
+        @comment = Polycom.find(params[:polycom_id])
+        # @comment = @micropost.comments.find(params[:comment_id])
         
     end
 
@@ -27,22 +27,37 @@ class PolycomsController < ApplicationController
             redirect_to micropost_path(@parent.commentable_id)
         end
 
-        
-
-
+    
     end
 
     def upvote
-        @comment = Comment.find(params[:comment_id])
+        @comment = Polycom.find(params[:polycom_id])
         @comment.upvote_by current_user
-        redirect_to @comment.micropost
+        @parent = Polycom.find(params[:polycom_id])
+        
+        while @parent.commentable_type != "Micropost"
+            @parent = Polycom.find(@parent.commentable_id)
         end
 
-        def downvote
-        @comment = Comment.find(params[:comment_id])
-        @comment.downvote_by current_user
-        redirect_to @comment.micropost
+        if @parent.commentable_type == "Micropost"
+            redirect_to micropost_path(@parent.commentable_id)
         end
+
+    end
+
+    def downvote
+        @comment = Polycom.find(params[:polycom_id])
+        @comment.downvote_by current_user
+        @parent = Polycom.find(params[:polycom_id])
+        
+        while @parent.commentable_type != "Micropost"
+            @parent = Polycom.find(@parent.commentable_id)
+        end
+
+        if @parent.commentable_type == "Micropost"
+            redirect_to micropost_path(@parent.commentable_id)
+        end
+    end
         
         def score
         self.get_upvotes.size - self.get_downvotes.size

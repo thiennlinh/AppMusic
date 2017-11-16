@@ -59,8 +59,8 @@ Rails.application.routes.draw do
   resources :polycoms do
     resources :polycoms, module: :polycoms
 
-    put "like", to: "comments#upvote"
-    put "dislike", to: "comments#downvote"
+    put "like", to: "polycoms#upvote"
+    put "dislike", to: "polycoms#downvote"
   end
 
   resources :comments do
