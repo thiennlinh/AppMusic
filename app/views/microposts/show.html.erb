@@ -43,7 +43,7 @@
                     <div class="col s9">
                         <span class="_details_top"></span><br><br>
                         <span class="_artist_title">[ Posted in <%= link_to Community.find(@micropost.community_id).title, community_path(@micropost.community_id) %> ]
-                        <br><span class="_details">Comments (<%= @micropost.comments.count %>)
+                        <br><span class="_details">Comments (<%= @micropost.polycoms.count %>)
                         <% if current_user?(@micropost.user) %> |
                                 <%= link_to "Delete Post", @micropost, method: :delete, data: { confirm: "Delete this post?"}%>
                             <% end %>
