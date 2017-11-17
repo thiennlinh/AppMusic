@@ -16,6 +16,16 @@
                 </ul>
                 <%= will_paginate @microposts %>
             <% end %>
+
+			<% if @user.playlists.any? %>
+                <div class="content_header">
+                    Playlists (<%= @user.playlists.count %>)
+                </div>
+                <ul class="playlist">
+                    <%= render @playlists %>
+                </ul>
+                <%= will_paginate @playlists %>
+            <% end %>
         </div>
 
         <% for com in @user_community %>
@@ -26,4 +36,3 @@
         <% end %>
     </div>
 </div>
-
