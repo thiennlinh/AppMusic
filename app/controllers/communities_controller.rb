@@ -21,16 +21,18 @@ class CommunitiesController < ApplicationController
     end
 
     def index
-        @community = Community.find(1)
-        @feed = Micropost.all.paginate(page: params[:page], :per_page => 10)
+        if Community.all.length != 0
+            @community = Community.find(1)
+            @feed = Micropost.all.paginate(page: params[:page], :per_page => 10)
 
-            #  Make sure to only collect 3 records using whatever method!
-        @community_listings = []
-            @community_names = []
-            for id in 1..Community.count
-            @community_names.append(Community.where(id: id).select(:title, :id))
-            @community_listings.push(Micropost.where(community_id: id).limit(8))
-            end
+                #  Make sure to only collect 3 records using whatever method!
+            @community_listings = []
+                @community_names = []
+                for id in 1..Community.count
+                @community_names.append(Community.where(id: id).select(:title, :id))
+                @community_listings.push(Micropost.where(community_id: id).limit(8))
+                end
+        end
     end
 
     def upvote

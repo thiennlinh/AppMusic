@@ -8,7 +8,7 @@
                         </div>
                         <div class="row">
                             <div class="col m12 s12">
-                                    
+                            <% if @community_listings != nil %>
                                 <% @count = 0 %>
                                 <% for post in @community_listings %>
 
@@ -67,6 +67,7 @@
                                 <% end %>
                                 <% @count = @count + 1 %>
                                 <% end %>
+                            <% end %>
                             </div>
                         </div>
 
