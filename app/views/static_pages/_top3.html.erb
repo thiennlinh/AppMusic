@@ -1,0 +1,32 @@
+<tr>
+    <td class="fp_song_title">
+        <% if logged_in? %>
+            <% if current_user.voted_up_on? each %>
+                <span class="_upvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
+            <% else %>
+                <span class="_nonvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
+            <% end %>
+        <% else %>
+            <span class="_nonvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
+        <% end %>
+        <span class="_score_trend"><%= each.cached_votes_score %></span>
+        <% if logged_in? %>
+            <% if current_user.voted_down_on? each %>
+                <span class="_downvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %> </span>
+            <% else %>
+                <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
+            <% end %>
+        <% else %>
+            <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
+        <% end %>
+        
+        <%= link_to each.title, each %> by <%= each.artist %> <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <% Playlist.all.each do |playlist| %>
+                <li><%= link_to playlist.name, playlist_addpost_path(playlist.id, each.id), method: :put %></li>
+            <% end %>
+        </ul>
+    </td>
+</tr>

@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote]
 
-	def create
+  def create
 		if logged_in?
 			@micropost = current_user.microposts.build(micropost_params)
 			if @micropost.save
@@ -9,7 +9,8 @@ class MicropostsController < ApplicationController
 			else
 				render 'static_pages/home'
 			end
-		end
+    end
+  
 
     end
 
@@ -48,6 +49,10 @@ class MicropostsController < ApplicationController
     end
 
     def new
+        if Community.all.length == 0
+          flash[:success] = "First create a Community."
+          redirect_to new_community_path
+        end
         @micropost = current_user.microposts.build if logged_in?
         @communities = Community.all
     end

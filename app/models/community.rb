@@ -4,4 +4,5 @@ class Community < ApplicationRecord
     validates :description, presence: true
     validates :user_id, presence: true
     has_many :microposts, dependent: :destroy
+    default_scope -> { order(cached_votes_score: :desc) }
 end

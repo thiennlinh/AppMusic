@@ -35,9 +35,6 @@ Rails.application.routes.draw do
 
     resources :microposts do
 
-      resources :comments
-
-
       member do
         put "like", to: "microposts#upvote"
         put "dislike", to: "microposts#downvote"
@@ -46,8 +43,6 @@ Rails.application.routes.draw do
   end
 
   resources :microposts do
-
-    resources :comments
 
     resources :polycoms, module: :microposts
 
@@ -63,10 +58,7 @@ Rails.application.routes.draw do
     put "dislike", to: "polycoms#downvote"
   end
 
-  resources :comments do
-    put "like", to: "comments#upvote"
-    put "dislike", to: "comments#downvote"
-  end
+
 
 
   resources :playlists do
