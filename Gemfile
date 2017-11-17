@@ -56,7 +56,7 @@ group :development, :test do
 
   gem 'bootstrap-will_paginate', '1.0.0'
     # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do
@@ -69,7 +69,7 @@ group :development do
 end
 
 group :production do
-  # gem 'pg', '0.21.0'
+  gem 'pg', '0.21.0'
 end
 
 
