@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote]
 
-	def create
+  def create
 		if logged_in?
 			@micropost = current_user.microposts.build(micropost_params)
 			if @micropost.save
@@ -9,7 +9,8 @@ class MicropostsController < ApplicationController
 			else
 				render 'static_pages/home'
 			end
-		end
+    end
+  
 
     end
 
@@ -18,6 +19,7 @@ class MicropostsController < ApplicationController
       @user = User.find(@micropost.user_id)
 
       @micropost_copy = Micropost.find(params[:id])
+
 
 	  regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
 	  match = regex.match(@micropost.url)
@@ -47,7 +49,12 @@ class MicropostsController < ApplicationController
     end
 
     def new
+        if Community.all.length == 0
+          flash[:success] = "First create a Community."
+          redirect_to new_community_path
+        end
         @micropost = current_user.microposts.build if logged_in?
+        @communities = Community.all
     end
 
 	def correct_user
@@ -66,6 +73,6 @@ private
 	end
 
 	def micropost_params
-        params.require(:micropost).permit(:content,:title,:url,:genre, :artist, :community_id)
+        params.require(:micropost).permit(:content,:title,:url,:artist,:community_id)
     end
 end

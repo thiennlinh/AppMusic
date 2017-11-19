@@ -197,8 +197,16 @@
     margin-right: 10px;
   }
 
+  .button_mod {
+    background-color: #424242;
+  }
+
+  .button_mod:hover {
+    background-color: #212121;
+  }
+
   .login_small {
-    background-color: #607d8b;
+    background-color: #424242;
     border-radius: 2px;
     border: none;
     color: white;
@@ -211,7 +219,7 @@
   }
 
   .login_small:hover {
-    background-color: #37474f;
+    background-color: #212121;
   }
 
   .checkbox {
@@ -253,6 +261,7 @@
   }
 
   ._details_reply {
+    color: $primary-color;
     display: block;
     font-size: 12px;
     margin-top: -3px;
@@ -408,7 +417,7 @@
 }
 
 ._diamond {
-  color: #bdbdbd;
+  color: #ababab;
 }
 
 ._score {
@@ -444,10 +453,42 @@
   font-size: 14px;
 }
 
-.vignette {
+.helper {
+  display: inline;
+  width: 50%;
+  color: #bdbdbd;
+}
 
+.hidden {
+  display: none;
+}
 
+.col_mod{
+  border: 0px;
+}
+
+.col_head_mod{
+  padding: 0px;
+  border: 0px;
+}
+
+.col_bod_mod{
+  padding: 0px;
+  border: 0px;
+}
+
+.mobile_head {
+  background-color: $primary-color;
   width: 100%;
-  height: 100%;
-  box-shadow: 0 0 100px rgba(116, 116, 116, 0.9) inset;
+  height: 75px;
+  margin-top: 0px;
+}
+
+.mobile_bod {
+  width: 100%
+}
+
+._mobile_header {
+  font-size: 35px;
+  font-weight: 100;
 }
