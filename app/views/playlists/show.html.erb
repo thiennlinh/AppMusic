@@ -15,7 +15,6 @@
                 <%# Post Information %>
                 <div class="row row_smal_margin content_card z-depth-1">
                     <div class="col s9">
-                        <!--<span class="_details_top"></span><br><br>-->
                         <br><span class="_details">Songs (<%= @playlist.microposts.count %>)
                         | Posted <%= time_ago_in_words(@playlist.created_at) %> ago by <%= link_to @playlist.user.name, @playlist.user %></span>
                     </div>
