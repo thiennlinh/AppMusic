@@ -1,24 +1,35 @@
 <% provide(:title, "Log in") %>
-  <div class="row">
-    <div class="col s10 offset-s1 content_card z-depth-1">
+<div class="row">
+    <div class="row">
+        <div class="col l8 offset-l2 s12">
+            <div class="content_title">
+                <i class="material-icons" style="font-size: 35px">account_box</i>Login
+            </div>
+        </div>
+    </div>
 
-		<div class="content_title">
-			Log in
-		</div>
+    <div class="row">
+        <div class="col l8 offset-l2 m12 s12">
+            <div class="row">
+                <div class="col l12 m12 s12 content_card z-depth-1"> 
+                    <div class="row">
+                        <div class="col s12">
+                        <br>
+                            <%= form_for(:session, url: login_path) do |f| %>
+                            <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
+                            <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
 
-		<div class="content_body">
-			<%= form_for(:session, url: login_path) do |f| %>
+                            <%= f.submit "Log in", class: "btn button_mod" %>
+                            <% end %>
 
-			<%= f.label :email %>
-			<%= f.email_field :email, class: 'form-control' %>
+                            <br>
+                            <%= link_to "forgot password?", new_password_reset_path %>
+                            <br>New user? <%= link_to "Sign up now!", signup_path %>
+                        </div>
+                    </div>
 
-			<%= f.label :password %>
-			<%= link_to "(forgot password)", new_password_reset_path %>
-			<%= f.password_field :password, class: 'form-control' %>
-
-			<%= f.submit "Log in", class: "btn btn-primary" %>
-			<% end %>
-
-			<p>New user? <%= link_to "Sign up now!", signup_path %></p>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

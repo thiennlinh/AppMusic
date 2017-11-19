@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110042658) do
+ActiveRecord::Schema.define(version: 20171116024146) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -18,20 +18,7 @@ ActiveRecord::Schema.define(version: 20171110042658) do
     t.integer "micropost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cached_votes_score", default: 0
-    t.integer "cached_votes_total", default: 0
-    t.integer "cached_votes_up", default: 0
-    t.integer "cached_votes_down", default: 0
-    t.integer "cached_weighted_score", default: 0
-    t.integer "cached_weighted_total", default: 0
-    t.float "cached_weighted_average", default: 0.0
-    t.index ["cached_votes_down"], name: "index_comments_on_cached_votes_down"
-    t.index ["cached_votes_score"], name: "index_comments_on_cached_votes_score"
-    t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total"
-    t.index ["cached_votes_up"], name: "index_comments_on_cached_votes_up"
-    t.index ["cached_weighted_average"], name: "index_comments_on_cached_weighted_average"
-    t.index ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score"
-    t.index ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total"
+    t.integer "parent_id"
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -47,6 +34,8 @@ ActiveRecord::Schema.define(version: 20171110042658) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.string "description"
+    t.integer "user_id"
     t.index ["cached_votes_down"], name: "index_communities_on_cached_votes_down"
     t.index ["cached_votes_score"], name: "index_communities_on_cached_votes_score"
     t.index ["cached_votes_total"], name: "index_communities_on_cached_votes_total"
@@ -96,12 +85,27 @@ ActiveRecord::Schema.define(version: 20171110042658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.decimal "score"
+  create_table "polycoms", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
+    t.index ["cached_votes_down"], name: "index_polycoms_on_cached_votes_down"
+    t.index ["cached_votes_score"], name: "index_polycoms_on_cached_votes_score"
+    t.index ["cached_votes_total"], name: "index_polycoms_on_cached_votes_total"
+    t.index ["cached_votes_up"], name: "index_polycoms_on_cached_votes_up"
+    t.index ["cached_weighted_average"], name: "index_polycoms_on_cached_weighted_average"
+    t.index ["cached_weighted_score"], name: "index_polycoms_on_cached_weighted_score"
+    t.index ["cached_weighted_total"], name: "index_polycoms_on_cached_weighted_total"
   end
 
   create_table "users", force: :cascade do |t|
