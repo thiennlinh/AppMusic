@@ -4,15 +4,12 @@ class PlaylistsController < ApplicationController
 		@playlist = Playlist.find(params[:id])
 	end
 
-	def create
-		@playlist = Playlist.new({:name => params[:playlist][:name]})
+	def new
+        @playlist = current_user.playlists.build if logged_in?
+    end
 
-		if params[:playlist][:micropost1]
-			@playlist.microposts << Micropost.find(params[:playlist][:micropost1])
-		end
-		if params[:playlist][:micropost2]
-			@playlist.microposts << Micropost.find(params[:playlist][:micropost2])
-		end
+	def create
+		@playlist = current_user.playlists.build(playlist_params)
 
 		if @playlist.save
 			flash[:success] = "Micropost created!"
@@ -25,5 +22,11 @@ class PlaylistsController < ApplicationController
 	def addpost
 		@playlist = Playlist.find(params[:playlist_id])
 		@playlist.microposts << Micropost.find(params[:post_id])
+	end
+
+	private
+
+	def playlist_params
+		params.require(:playlist).permit(:name)
 	end
 end

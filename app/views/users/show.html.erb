@@ -28,7 +28,7 @@
                                 <table class="bordered highlight">
                                     <% if @subscriptions.length  == 0 %>
 
-                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %> 
+                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %>
                                             does not appear to have any subscriptions.</span><br>
                                     <% else %>
                                         <% for com in @subscriptions %>
@@ -55,11 +55,11 @@
                                 <table class="bordered highlight">
                                     <% if @playlists.length  == 0 %>
 
-                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %> 
+                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %>
                                             does not appear to have any playlists.</span><br>
                                     <% else %>
                                         <% for play in @playlists %>
-                                            <tr><td class="fp_song_title"><%= link_to com.title, community_path(com) %></tr></td>
+                                            <tr><td class="fp_song_title"><%= link_to play.name, playlist_path(play) %></tr></td>
                                         <% end %>
                                     <% end %>
                                 </table>
@@ -94,7 +94,7 @@
                                 <ul class="feed_listing">
                                     <table class="bordered highlight">
                                     <% if @microposts.length == 0%>
-                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %> 
+                                        <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %>
                                             does not appear to have any posts.</span><br>
                                     <% else %>
                                         <%= render @microposts %>

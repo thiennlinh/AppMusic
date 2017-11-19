@@ -5,13 +5,12 @@
             Create New Playlist
         </div>
 
-		<%= form_with scope: :playlist, url: playlists_path, local: true do |form| %>
-			<p>
-				<%= form.label :name %><br>
-				<%= form.text_field :name %>
-			</p>
-
-		    <%= form.submit class: "btn btn-primary" %>
+		<%= form_for(@playlist) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		  <div class="field">
+		    <%= f.text_field :name, placeholder: "Name" %>
+		  </div>
+		  <%= f.submit "Post", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>
