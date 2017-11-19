@@ -1,6 +1,30 @@
-<h1>Playlist with id=<%= params[:id] %></h1>
-<p>Name: <%= @playlist[:name] %></p>
+<% provide(:title, @playlist.name) %>
 
-<% @playlist.microposts.each do |post| %>
-	<p><%= post[:title] %></p>
-<% end %>
+<div class="row">
+
+    <div class="col s12 l10 offset-l1">
+        <div class="row">
+
+            <div class="col s12">
+                <%# Title %>
+
+                <div class="content_title_post">
+                    <%= @playlist.name %>
+                </div>
+
+                <%# Post Information %>
+                <div class="row row_smal_margin content_card z-depth-1">
+                    <div class="col s9">
+                        <!--<span class="_details_top"></span><br><br>-->
+                        <br><span class="_details">Songs (<%= @playlist.microposts.count %>)
+                        | Posted <%= time_ago_in_words(@playlist.created_at) %> ago by <%= link_to @playlist.user.name, @playlist.user %></span>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+
+    </div>
+
+</div>
