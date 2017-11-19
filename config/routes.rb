@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'password_resets/new'
-
   get 'password_resets/edit'
 
   root 'static_pages#home'
@@ -16,8 +15,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
 
-  get 'welcome/index'
-
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
 
@@ -29,9 +26,13 @@ Rails.application.routes.draw do
 
   resources :admin
 
+  get "/com_mgmt", to: "admin#community_mgmt"
+
   resources :communities do
     put "like", to: "communities#upvote"
     put "dislike", to: "communities#downvote"
+
+    get "moderate", to: "communities#moderation"
 
     resources :microposts do
 

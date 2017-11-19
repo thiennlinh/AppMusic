@@ -4,6 +4,10 @@ class AdminController < ApplicationController
     def index
     end
 
+    def community_mgmt
+        @communities = Community.all
+    end
+
     ## Only allow admins access to the panel,
     ## otherwise redirect users back to the homepage
     def correct_user

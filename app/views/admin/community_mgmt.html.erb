@@ -1,1 +1,31 @@
-test
+<% provide(:title, 'Community Moderation Listing') %>
+
+<div class="row">
+    <div class="row">
+        <div class="col l11 offset-l1">
+            <div class="content_title">
+                <i class="material-icons" style="font-size: 35px">account_circle</i>Community Listing
+            </div>
+        </div>
+    </div>
+
+    <%= render 'admin/navigation'%>
+
+    <div class="col l8">
+        <div class="row">
+            <div class="col s12 content_card z-depth-1">
+                <span class="_diamond"><br>Choose a community to moderate posts.</span>
+                <ul class="users">
+                    <table class="bordered highlight">
+                        <tr>
+                        <th>Communiy Name</th>
+                        <th>Subscribers</th>
+                        <th>Admin Action</th>
+                        </tr>
+                        <%= render @communities %>
+                    </table>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
