@@ -7,7 +7,6 @@
 
             <div class="col s12">
                 <%# Title %>
-
                 <div class="content_title_post">
                     <%= @playlist.name %>
                 </div>
@@ -20,7 +19,18 @@
                     </div>
                 </div>
 
-                <br>
+				</br>
+
+				<%# Post Listing %>
+				<div class="row row_smal_margin content_card z-depth-1">
+					<div class="col s9">
+						<table class="bordered highlight">
+							<% for micropost in @microposts %>
+								<%= render partial: "microposts/micropost_playlist", locals: {micropost: micropost} %>
+							<% end %>
+						</table>
+					</div>
+				</div>
             </div>
         </div>
 

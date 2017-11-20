@@ -2,6 +2,7 @@ class PlaylistsController < ApplicationController
 
 	def show
 		@playlist = Playlist.find(params[:id])
+		@microposts = @playlist.microposts.paginate(page: params[:page])
 	end
 
 	def new
