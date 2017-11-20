@@ -5,18 +5,11 @@
                     <%= render partial: "microposts/vote", locals: {micropost: micropost} %>
                 </div>
                 <div class="col l10 s11">
-                    <span class="_details_top">[ Posted in <%= link_to Community.find(micropost.community_id).title, community_path(micropost.community_id) %> ] 
-                    <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
-
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content'>
-                            <% Playlist.all.each do |playlist| %>
-                                <li><%= link_to playlist.name, playlist_addpost_path(playlist.id, micropost.id), method: :put %></li>
-                            <% end %>
-                        </ul>
+                    <span class="_details_top">[ Posted in <%= link_to Community.find(micropost.community_id).title, community_path(micropost.community_id) %> ]
+                    <%= render partial: "shared/add_to_playlist_button", locals: {micropost: micropost} %>
                     </span>
-                    
-                    
+
+
                     <br>
                     <span class="_title"><span class="_diamond hide">◊</span><%= link_to micropost.title, micropost %></span> <span class="_artist_title">By <%= micropost.artist %></span>
                     <br><span class="_details">Comments (<%= micropost.polycoms.count %>)
