@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote]
+    before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote, :edit, :moderate]
 
   def create
 		if logged_in?
@@ -7,11 +7,9 @@ class MicropostsController < ApplicationController
 			if @micropost.save
 				redirect_to root_url
 			else
-				render 'static_pages/home'
+				redirect_to new_micropost_path, alert: "Error! Fields cannot be blank!"
 			end
-    end
-  
-
+		end
     end
 
     def show
@@ -44,8 +42,8 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
-		@micropost = Micropost.find(params[:id]).destroy
-    	redirect_to root_path alert: "Post Deleted"
+		  @micropost = Micropost.find(params[:id]).destroy
+    	redirect_to community_moderate_path(@micropost.community_id), alert: "Post Deleted"
     end
 
     def new
@@ -57,12 +55,37 @@ class MicropostsController < ApplicationController
         @communities = Community.all
     end
 
-	def correct_user
-    	@micropost = Micropost.find_by(id: params[:id])  #find the post
-    	unless current_user?(@post.user)
-      	redirect_to user_path(current_user)
-    	end
+    def correct_user
+        @micropost = Micropost.find_by(id: params[:id])  #find the post
+        unless current_user?(@post.user)
+          redirect_to user_path(current_user)
+        end
 	end
+	
+    def edit
+        if current_user.admin
+            @micropost = Micropost.find(params[:id])
+        else
+            redirect_to root_path
+        end
+    end
+
+    def update
+        @micropost = Micropost.find(params[:id])
+        if @micropost.update_attributes(micropost_params)
+          redirect_to com_mgmt_path alert: "Post Updated"
+        else
+          render 'edit'
+        end
+    end
+
+    def moderation
+      if current_user.admin
+          @micropost = Micropost.find(params[:micropost_id])
+      else
+          redirect_to root_path
+      end
+    end
 
 private
 

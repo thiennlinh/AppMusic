@@ -79,7 +79,10 @@
 								<tr><td><%= link_to "Home", root_path %><tr>
 								<tr><td><%= link_to "Submit a Song", new_micropost_path %>
 
-								<tr><td><%= link_to "Logout", logout_path %></td></tr>
+								<tr><td><%= link_to "Logout", logout_path, method: :delete %></td></tr>
+								<% if current_user.admin %>
+									<tr><td><%= link_to "Admin Panel", admin_index_path %></td></tr>
+								<% end %>
 							</table>
 						<% else %>
 

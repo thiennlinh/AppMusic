@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'password_resets/new'
-
   get 'password_resets/edit'
 
   root 'static_pages#home'
@@ -16,22 +15,30 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
 
-  get 'welcome/index'
-
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
+  resources :users do
+  end
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
   resources :admin
 
+  get "/com_mgmt", to: "admin#community_mgmt"
+  get "/admin_mgmt", to: "admin#admin_mgmt"
+  get "/usr_mgmt", to: "admin#usr_mgmt"
+  get "/spotify_mgmt", to: "admin#spotify_mgmt"
+
+  
+
   resources :communities do
     put "like", to: "communities#upvote"
     put "dislike", to: "communities#downvote"
+
+    get "moderate", to: "communities#moderation"
 
     resources :microposts do
 
@@ -45,6 +52,7 @@ Rails.application.routes.draw do
   resources :microposts do
 
     resources :polycoms, module: :microposts
+    get "moderate", to: "microposts#moderation"
 
     put "like", to: "microposts#upvote"
     put "dislike", to: "microposts#downvote"

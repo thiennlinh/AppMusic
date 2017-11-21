@@ -1,80 +1,32 @@
+<% provide(:title, "Communities") %>
+<div class="row">
+    <div class="col l10 offset-l1  m12 s12  ">
         <div class="row">
-
-            <div class="col l10 offset-l1  m12 s12  ">
+            <div class="col s12">
+                <div class="content_title">
+                    <i class="material-icons" style="font-size: 35px">trending_up</i>Trending Communities
+                </div>
                 <div class="row">
-                    <div class="col s12">
-                        <div class="content_title">
-                            Communities
-                        </div>
+                    <div class="col m12 s12">
                         <div class="row">
-                            <div class="col m12 s12">
-                            <% if @community_listings != nil %>
-                                <% @count = 0 %>
-                                <% for post in @community_listings %>
-
-                                    <% if @count % 3 == 0 %>
-                                        <div class="row">
-                                    <% end %>
-                                    
-                                    <div class="col l4 m12 s12"> 
-                                        <span class="_title"><%= link_to @community_names[@count].first.title, @community_names[@count].first %></span>
-                                        <div class="row">
-                                            <div class="col s12 content_card z-depth-1 ">
-                                                <span class="_details_top_trend">Top Tracks</span><br>
-                                                <table class="bordered highlight ">
-                                                    <% for each in post %>
-                                                        <tr>
-                                                            <td class="fp_song_title">
-                                                                <% if logged_in? %>
-                                                                    <% if current_user.voted_up_on? each %>
-                                                                        <span class="_upvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
-                                                                    <% else %>
-                                                                        <span class="_nonvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
-                                                                    <% end %>
-                                                                <% else %>
-                                                                    <span class="_nonvoted_trend"> <%= link_to "∆", micropost_like_path(each), method: :put %></span>
-                                                                <% end %>
-                                                                <span class="_score_trend"><%= each.cached_votes_score %></span>
-                                                                <% if logged_in? %>
-                                                                    <% if current_user.voted_down_on? each %>
-                                                                        <span class="_downvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %> </span>
-                                                                    <% else %>
-                                                                        <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
-                                                                    <% end %>
-                                                                <% else %>
-                                                                    <span class="_nonvoted_trend"> <%= link_to "∇", micropost_dislike_path(each), method: :put %></span>
-                                                                <% end %>
-                                                                
-                                                                <%= link_to each.title, each %> by <%= each.artist %> <a class='dropdown-button' href='#' data-activates='dropdown1'><i class="material-icons right" style="font-size: 16px">playlist_add</i></a>
-
-                                                                <!-- Dropdown Structure -->
-                                                                <ul id='dropdown1' class='dropdown-content'>
-                                                                    <% Playlist.all.each do |playlist| %>
-                                                                        <li><%= link_to playlist.name, playlist_addpost_path(playlist.id, each.id), method: :put %></li>
-                                                                    <% end %>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                    <% end %>
-
-                                                </table>
-                                                <span class="_details_trend right"><%= link_to "More...", @community_names[@count].first %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <% if @count % 3 == 2 %>
-                                    </div>
-                                <% end %>
-                                <% @count = @count + 1 %>
+                            <% if @community_listings.length == 0 %>
+                                <br>
+                                <div class="col s12 content_card z-depth-1" style="padding: 10px;">
+                                    <span class="_diamond">
+                                        There are not any communities stored in the database. The first step should be to
+                                        <%= link_to "create one.", new_community_path %>
+                                    <span>
+                                </div>
+                            <% else %>
+                                <% for com in @community_listings %>
+                                    <%= render partial: "static_pages/topcom", locals: {com: com} %>
                                 <% end %>
                             <% end %>
-                            </div>
                         </div>
-
+                    </div>
                 </div>
-
-            </div>
         </div>
+</div>
 
 
 
