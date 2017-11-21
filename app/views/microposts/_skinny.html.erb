@@ -10,11 +10,11 @@
         </li>
     </td>
     <td><%= link_to micropost.user.name, micropost.user %></td>
+    <td><%= micropost.polycoms.length %></td>
     <td><%= micropost.cached_votes_score %></td>
     <td><%= micropost.cached_votes_up %></td>
     <td><%= micropost.cached_votes_down %></td>
     <td>
-        <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %> | 
-        <%= link_to "edit", edit_micropost_path(micropost) %>
+        <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
     </td>
 </tr>

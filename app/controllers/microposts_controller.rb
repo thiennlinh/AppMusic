@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote, :edit]
+    before_action :logged_in_user, only: [:create, :destroy, :upvote, :downvote, :edit, :moderate]
 
   def create
 		if logged_in?
@@ -7,7 +7,7 @@ class MicropostsController < ApplicationController
 			if @micropost.save
 				redirect_to root_url
 			else
-				render 'static_pages/home'
+				redirect_to new_micropost_path, alert: "Error! Fields cannot be blank!"
 			end
 		end
     end
@@ -43,7 +43,7 @@ class MicropostsController < ApplicationController
 
     def destroy
 		  @micropost = Micropost.find(params[:id]).destroy
-    	redirect_to root_path alert: "Post Deleted"
+    	redirect_to community_moderate_path(@micropost.community_id), alert: "Post Deleted"
     end
 
     def new
@@ -77,6 +77,14 @@ class MicropostsController < ApplicationController
         else
           render 'edit'
         end
+    end
+
+    def moderation
+      if current_user.admin
+          @micropost = Micropost.find(params[:micropost_id])
+      else
+          redirect_to root_path
+      end
     end
 
 private

@@ -21,12 +21,18 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
+  resources :users do
+  end
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
   resources :admin
 
   get "/com_mgmt", to: "admin#community_mgmt"
+  get "/admin_mgmt", to: "admin#admin_mgmt"
+  get "/usr_mgmt", to: "admin#usr_mgmt"
+  get "/spotify_mgmt", to: "admin#spotify_mgmt"
+
+  
 
   resources :communities do
     put "like", to: "communities#upvote"
@@ -46,6 +52,7 @@ Rails.application.routes.draw do
   resources :microposts do
 
     resources :polycoms, module: :microposts
+    get "moderate", to: "microposts#moderation"
 
     put "like", to: "microposts#upvote"
     put "dislike", to: "microposts#downvote"

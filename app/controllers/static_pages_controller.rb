@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     
     if logged_in?
       @microposts = current_user.microposts.paginate(page: params[:page])
-      @posts = current_user.microposts
+      @posts = current_user.microposts.limit(5)
     end
 
     @feed = Micropost.paginate(page: params[:page], :per_page => 7)
