@@ -54,8 +54,8 @@ class PolycomsController < ApplicationController
     end
 
     def destroy
-        @polycom = Polycom.find(params[:id]).destroy
         @parent = get_micropost
+        @polycom = Polycom.find(params[:id]).destroy
 
         redirect_to edit_micropost_path(@parent.commentable_id), alert: "Comment Deleted"
     end
