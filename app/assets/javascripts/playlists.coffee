@@ -30,13 +30,40 @@ $(".playlists.show").ready ->
 		else
 			return null
 
+	playQueue = new PlaylistQueue($('#video-placeholder').data('microposts'))
+
 	window.player = undefined
 
 	window.onYouTubeIframeAPIReady = ->
-		@microposts = $('#video-placeholder').data('microposts')
-		vidId = parse_youtube_id @microposts[0]['url']
+		microposts = $('#video-placeholder').data('microposts')
+		vidId = parse_youtube_id microposts[0]['url']
 		window.player = new (YT.Player)('video-placeholder',
-	    	width: 600
-	    	height: 400
-	    	videoId: vidId
-	    	playerVars: color: 'white')
+			width: 600
+			height: 400
+			videoId: vidId
+			playerVars: color: 'white'
+			events: onStateChange: onStateChange)
+		return
+
+	window.onStateChange = (event) ->
+		if event.data == 0
+			next = playQueue.getNext()
+			if next
+				window.player.loadVideoById(parse_youtube_id next.url)
+			else
+				alert 'Playlist Complete'
+		return
+
+	$('#previous-button').click ->
+		prev = playQueue.getPrev()
+		if prev
+			window.player.loadVideoById(parse_youtube_id prev.url)
+		else
+			alert 'No Previous Song'
+
+	$('#next-button').click ->
+		next = playQueue.getNext()
+		if next
+			window.player.loadVideoById(parse_youtube_id next.url)
+		else
+			alert 'No Next Song'
