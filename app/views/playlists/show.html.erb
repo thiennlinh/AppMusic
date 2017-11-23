@@ -21,6 +21,13 @@
 
 				</br>
 
+				<%# Autoplayer %>
+				<%= content_tag(:div, "", id: "video-placeholder", data: {microposts: @playlist.microposts}) %>
+				<script src="https://www.youtube.com/iframe_api"></script>
+
+				<button id="previous-button">Previous</button>
+				<button id="next-button">Next</button></br>
+
 				<%# Song Listing %>
 				<div class="row row_smal_margin content_card z-depth-1">
 					<div class="col s9">
