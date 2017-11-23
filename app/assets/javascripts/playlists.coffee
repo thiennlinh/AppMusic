@@ -41,7 +41,6 @@ $(".playlists.show").ready ->
 	playQueue = new PlaylistQueue($('#video-placeholder').data('microposts'))
 
 	window.player = undefined
-	window.isPlaying = false
 
 	window.onYouTubeIframeAPIReady = ->
 		microposts = $('#video-placeholder').data('microposts')
@@ -95,3 +94,10 @@ $(".playlists.show").ready ->
 		jumpTo = playQueue.getById($(this).data('id'))
 		if jumpTo
 			window.player.loadVideoById(parse_youtube_id jumpTo.url)
+
+	$('.playlist-listing-row').hover ->
+		$('#playlist-button-' + $(this).data('id')).show()
+	, ->
+		$('#playlist-button-' + $(this).data('id')).hide()
+
+	return
