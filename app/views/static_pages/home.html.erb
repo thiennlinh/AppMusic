@@ -167,7 +167,7 @@
                         </div>
 
                         <div class="col l4 m12 s12"> 
-                            <span class="_title"> My Posts (<%= current_user.microposts.count %>) </span>
+                            <span class="_title"> My Posts (Top 5) </span>
                             <div class="row">
                                 <div class="col s12 content_card z-depth-1">
                                     <table class="bordered highlight">
@@ -188,7 +188,7 @@
                             <div class="row">
                                 <div class="col s12 content_card z-depth-1">
                                     <table class="bordered highlight">
-                                        <% @current = current_user.votes.up.for_type(Micropost) %>
+                                        <% @current = current_user.votes.up.for_type(Micropost).limit(5) %>
                                         <% for micropost in @current %>
                                             <tr>
                                                 <td class="fp_song_title">
