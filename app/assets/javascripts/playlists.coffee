@@ -32,7 +32,9 @@ $(".playlists.show").ready ->
 
 	playQueue = new PlaylistQueue($('#video-placeholder').data('microposts'))
 
+	# yeah I'm using globals; come get me commies
 	window.player = undefined
+	window.isPlaying = false
 
 	window.onYouTubeIframeAPIReady = ->
 		microposts = $('#video-placeholder').data('microposts')
@@ -43,7 +45,6 @@ $(".playlists.show").ready ->
 			videoId: vidId
 			playerVars: color: 'white'
 			events: onStateChange: onStateChange)
-		return
 
 	window.onStateChange = (event) ->
 		if event.data == 0
@@ -53,6 +54,16 @@ $(".playlists.show").ready ->
 			else
 				alert 'Playlist Complete'
 		return
+
+	$('#play-pause-button').click ->
+		if window.isPlaying
+			window.isPlaying = false
+			window.player.pauseVideo()
+			$('#play-pause-button').html('<i class="small material-icons">play_arrow</i>')
+		else
+			window.isPlaying = true
+			window.player.playVideo()
+			$('#play-pause-button').html('<i class="small material-icons">pause</i>')
 
 	$('#previous-button').click ->
 		prev = playQueue.getPrev()
