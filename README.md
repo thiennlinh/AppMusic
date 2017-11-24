@@ -1,19 +1,20 @@
-Note* /documentation/rdoc is generated documentation code, /documentation contains sprint backlog, etc.
+Note* /documentation/rdoc is generated documentation code, /documentation contains all artifacts.
 
 ![Soundit!](/app/assets/images/logo.png)
 
-# ( Project 3 )
+# SoundIt! ( Project 4 Submission )
 
 Do you find that media player search algorithms always are suggesting the same songs and take
 the human experience out of music? Soundit! attempts to solve this problem by blatently ripping 
 off the -it experience and combining it with the ability to generate playlists out of the songs
-you "like". 
+you "like", exporting them to Spotify and otherwise allowing you and your friends a more social, 
+personal music experience.
 
 ## About
-Soundit! was built using the rails framework and works with either a postgresql or sqlite3 database.
+Soundit! was built using the Rails framework and works with either a postgresql or sqlite3 database.
 
 ## Deployment
-* Download from Github
+* Clone from Github
 * Navigate to the repo in the terminal
     * Be sure to use Ruby 2.4.1 or newer
 * `bundle install`
@@ -23,25 +24,21 @@ Soundit! was built using the rails framework and works with either a postgresql 
     * Admin account uname: admin@admin.com pass: admin123
     * User account: uname: user@user.com pass: user123
 
-## Project 3 Features **More can be found in the /doc backlog files, this is a public facing listing**
 
 ### Functionality
-* Ability to register/reset password and user session control
 * Users can post links to songs
-* Posts can be upvoted and downvoted with score tracking
-* Posts can be moderated if the user is an admin
-    * Admin status must be set by modifying the database ( Will be fixed for proj. 4 )
-* Global playlists can be created and added to by users
-
-### Models
-* Custom user model
-* Custom user sessions model
-* Custom post model
-* Custom playlist model
+    * Posts can be upvoted and downvoted with score tracking
+    * Users can comment on posts and comments creating subdiscussions within song postings
+* Each song belongs to a user-created community of similar genre songs
+    * Users can subscribe to communities
+* Posts, comments, communities can be moderated by Admins 
+    * Fully featured admin console ensures unwanted content can be removed quickly
+* Global Frontpage playlist can be created and added to by users via posted songs
+* Frontpage Spotify playlist and youtube playlists allow quick and convenient listening
 
 ### Notes
 * Styling based on Google Material Design
-* Fully native mobile and web experience ( mobile in progress )
+* Fully native mobile and web experience
 
 ( The main goal was to roll our own whenever we can and avoid using gems )
 
@@ -49,13 +46,3 @@ Soundit! was built using the rails framework and works with either a postgresql 
 * Post model adapted from [Rails Guides](http://guides.rubyonrails.org/)
 * Users and sessions adapted from [Ruby on Rails Tutorial](https://www.railstutorial.org/)
 * [Materialize CSS](http://materializecss.com)
-
-## Project 4 ( Proposed additions )
-* Playlists are assigned to users, and users keep unique playlists
-    * Groups of users all having modify access to to shared playlist
-* **Ability to export playlists into Spotify playlists**
-* Media player able to handle songs from links other than youtube
-* **Nested comments**
-* Fully mobile design
-* More...
-
