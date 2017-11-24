@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :edit_params || :correct_user,     only: [:edit, :update, :destroy]
+  before_action :edit_params,     only: [:edit, :update, :destroy]
 
   def show
     @user = User.find(params[:id])
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       log_in @user
       flash[:success] = "Welcome to SoundIt!"
@@ -43,9 +44,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    if User.all.length != 1
+      @user = User.find(params[:id])
+
+      if @user.admin? && User.all.where(admin: 't').length == 1
+        redirect_back fallback_location: root_url, alert: "Cannot remove only admin!"
+      else
+        @user.destroy
+        redirect_back fallback_location: root_url, alert: "Successfully Removed User!"
+      end
+
+    else 
+      redirect_back fallback_location: root_url, alert: "Cannot remove only User!"
+    end
   end
 
   def spotify

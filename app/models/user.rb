@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     attr_accessor :remember_token, :reset_token
     has_many :microposts, dependent: :destroy
-    has_many :comments, dependent: :destroy
+    has_many :polycoms, dependent: :destroy
 	has_many :playlists, dependent: :destroy
     acts_as_voter
 

@@ -8,6 +8,38 @@
 <div class="row">
     <div class="col l10 offset-l1  m12 s12  ">
 
+<%# -- Admin Control Message --------------------------------------------------- %>
+
+<% if @admin_error %>
+    <div class="row">
+        <div class="col l8 offset-l2 s12">
+            <span class="_title">
+                <i class="material-icons" style="font-size: 20px">cloud_queue</i> Admin Error
+            </span>
+            <div class="row">
+                <div class="col m12 s12">
+                    <div class="row">
+                        <div class="col s12 content_card z-depth-1" style="padding-top: 5px; padding-bottom: 5px;">
+                            <span>
+                                <span style="color: red;">There are not currently any admins. Please add yourself as an admin before continuing!</span> <br>
+                                <table class="bordered highlight">
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <%= render partial: "users/admin", locals: {user: current_user} %>
+
+                                </table>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%# Block everything else if admin_error %>
+<% else %>
+
 
 <%# -- Guest Welcome Message --------------------------------------------------- %>
 
@@ -219,6 +251,8 @@
     </div>
 <% end %>
 
+<%# End admin error  %>
+<% end %>
 
     </div>
 </div>

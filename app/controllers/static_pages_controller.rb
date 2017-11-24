@@ -8,6 +8,14 @@ class StaticPagesController < ApplicationController
       @posts = current_user.microposts.limit(5)
       @playlists = current_user.playlists.all
       @current_playlists = current_user.playlists.all
+
+      @admins = User.all.where(admin: 't')
+
+      @admin_error = false
+
+      if @admins.length == 0
+        @admin_error = true
+      end
       
     end
 
