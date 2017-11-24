@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
   end
 
   def spotify
-
+    
   end
 
   def spotify_helper
@@ -33,7 +33,7 @@ class StaticPagesController < ApplicationController
   @songs = Micropost.all.limit(50)
 
       ## Do not store this on github!!!
-      RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "ed91711edce944549f3041499433f016")
+      RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
 
 
       spotify_user = RSpotify::User.find('1224459409')

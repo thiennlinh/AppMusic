@@ -61,6 +61,10 @@ class UsersController < ApplicationController
     redirect_to admin_mgmt_path, alert: "Successfully created admin."
   end
 
+  def spotify
+    redirect_back fallback_location: root_url, alert: "Sign in Successul"
+  end
+
   private
 
     def user_params
