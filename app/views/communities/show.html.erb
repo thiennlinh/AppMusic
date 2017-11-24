@@ -50,11 +50,9 @@
                                             <span class="_nonvoted_com"> <%= link_to "Login to add to your list", login_path %></span>
                                         <% end %>
                                         <br>
-                                        Creation Date: <%= time_ago_in_words(@community.created_at) %> ago
+                                        Created: <%= time_ago_in_words(@community.created_at) %> ago
                                         <br>
-                                        Description:
-                                        <br>
-                                        Moderators: 
+                                        Description: <%= @community.description %>
 
                                     </div>
                                 </div>
