@@ -158,10 +158,20 @@
                 <div class="col m12 s12">
                     <div class="row">
                         <div class="col l4 m12 s12"> 
-                            <span class="_title"> @Title </span>
+                            <span class="_title">My Playlists</span>
                             <div class="row">
-                                <div class="col s12 content_card z-depth-1">
-                                    @concent
+                                <div class="col m12 content_card z-depth-1">
+                                    <table class="bordered highlight">
+                                        <% if @playlists.length  == 0 %>
+
+                                            <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %>
+                                                does not appear to have any playlists.</span><br>
+                                        <% else %>
+                                            <% for play in @current_playlists %>
+                                                <tr><td class="fp_song_title"><%= link_to play.name, playlist_path(play) %></tr></td>
+                                            <% end %>
+                                        <% end %>
+                                    </table>
                                 </div>
                             </div>
                         </div>

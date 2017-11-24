@@ -13,6 +13,7 @@ class StaticPagesController < ApplicationController
     @feed = Micropost.paginate(page: params[:page], :per_page => 7)
     @community_listings = Community.all.limit(3)
     @playlists = Playlist.all.limit(7)
+    @current_playlists = current_user.playlists.all
 
   end
 
