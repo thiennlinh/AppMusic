@@ -7,7 +7,7 @@ class MicropostTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:michael)
-    @micropost = @user.microposts.build(content: "Lorem ipsum")
+    @micropost = @user.microposts.build(content: "Lorem ipsum", artist: "test", title: "title", community_id: 1)
   end
 
   test "should be valid" do
@@ -24,12 +24,19 @@ class MicropostTest < ActiveSupport::TestCase
     assert_not @micropost.valid?
   end
 
+  test "artist should be present" do
+    @micropost.artist = "   "
+    assert_not @micropost.valid?
+  end
+
+  test "title should be present" do
+    @micropost.title = "   "
+    assert_not @micropost.valid?
+  end
+
   test "content should be at most 1000 characters" do
     @micropost.content = "a" * 1001
     assert_not @micropost.valid?
   end
-
-  test "order should be most recent first" do
-    assert_equal microposts(:most_recent), Micropost.first
-  end
+  
 end
