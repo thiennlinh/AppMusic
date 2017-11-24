@@ -13,7 +13,7 @@ class PlaylistsController < ApplicationController
 		@playlist = current_user.playlists.build(playlist_params)
 
 		if @playlist.save
-			flash[:success] = "Micropost created!"
+			flash[:success] = "Playlist created!"
             redirect_to root_url
 		else
 			render 'static_pages/home'

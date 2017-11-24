@@ -162,10 +162,10 @@
                             <div class="row">
                                 <div class="col m12 content_card z-depth-1">
                                     <table class="bordered highlight">
-                                        <% if @playlists.length  == 0 %>
-
-                                            <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> <%= @user.name %>
-                                                does not appear to have any playlists.</span><br>
+                                        <% if @current_playlists.length  == 0 %>
+                                            <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> 
+                                            You do not appear to have any playlists.<br>
+                                            <%= link_to "Create one?", new_playlist_path %></span><br>
                                         <% else %>
                                             <% for play in @current_playlists %>
                                                 <tr><td class="fp_song_title"><%= link_to play.name, playlist_path(play) %></tr></td>
