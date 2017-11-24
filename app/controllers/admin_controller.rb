@@ -23,9 +23,13 @@ class AdminController < ApplicationController
     ## Only allow admins access to the panel,
     ## otherwise redirect users back to the homepage
     def correct_user
-    	@user = current_user
-    	redirect_to root_path unless current_user.admin? do
-          redirect_to user_path(current_user)
+        if logged_in?
+            @user = current_user
+            redirect_to root_path unless current_user.admin? do
+            redirect_to user_path(current_user)
+            end
+        else
+            redirect_back fallback_location: root_path
         end
     end
 end
