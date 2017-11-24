@@ -13,6 +13,11 @@ personal music experience.
 ## About
 Soundit! was built using the Rails framework and works with either a postgresql or sqlite3 database.
 
+## Testing
+* Navigate to the repo in the terminal
+* `rails test` will run the automatic testing suite
+* Note* To see test information look through .rb files in /test
+
 ## Deployment
 * Clone from Github
 * Navigate to the repo in the terminal
