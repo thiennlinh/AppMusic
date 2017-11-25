@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get "/usr_mgmt", to: "admin#usr_mgmt"
   get "/spotify_mgmt", to: "admin#spotify_mgmt"
 
-  
+
 
   resources :communities do
     put "like", to: "communities#upvote"
@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   resources :playlists do
   	put "addpost/:post_id", to: "playlists#addpost", as: 'addpost'
+	put "removepost/:post_id", to: "playlists#removepost", as: 'removepost'
   end
 
 

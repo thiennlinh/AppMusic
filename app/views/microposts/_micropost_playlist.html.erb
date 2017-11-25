@@ -5,7 +5,7 @@
 				<span class="_title"><%= micropost.title %> (<%= micropost.artist %>)</span>
 			</div>
 			<div class="col s1">
-				<%= render partial: "shared/playlist_menu_button", locals: {micropost: micropost} %>
+				<%= render partial: "shared/playlist_menu_button", locals: {playlist: playlist, micropost: micropost} %>
 			</div>
 		</li>
 	</td>

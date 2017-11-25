@@ -25,6 +25,13 @@ class PlaylistsController < ApplicationController
 		@playlist.microposts << Micropost.find(params[:post_id])
 	end
 
+	def removepost
+		@playlist = Playlist.find(params[:playlist_id])
+		@playlist.microposts.delete(Micropost.find(params[:post_id]))
+
+		redirect_back fallback_location: current_user
+	end
+
 	private
 
 	def playlist_params
