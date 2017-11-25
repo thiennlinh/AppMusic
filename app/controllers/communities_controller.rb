@@ -73,6 +73,21 @@ class CommunitiesController < ApplicationController
             redirect_to root_path
         end
       end
+    
+    def spotify_helper
+        @community = Community.find(params[:community_id])
+    end
+
+    def create_playlist
+        @community = Community.find(params[:community_id])
+        
+        RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
+        spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+
+
+        redirect_to community_spotify_path(@community)
+
+    end
 
     private
 

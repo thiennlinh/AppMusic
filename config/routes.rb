@@ -39,6 +39,12 @@ Rails.application.routes.draw do
     put "dislike", to: "communities#downvote"
 
     get "moderate", to: "communities#moderation"
+    get 'spotify', to: 'communities#spotify_helper'
+    get 'spotify_create', to: 'communities#create_playlist'
+    
+    resources :users do 
+      get 'spotify_create', to: 'users#create_playlist'
+    end
 
     resources :microposts do
 

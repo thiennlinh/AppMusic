@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :edit_params,     only: [:edit, :update, :destroy]
 
+
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
@@ -59,8 +60,53 @@ class UsersController < ApplicationController
     end
   end
 
-  def spotify
+  def spotify_user
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+
+    @user = User.find(params[:id])
+    ActiveRecord::Base.include_root_in_json = true
+    @user.spot_hash = JSON.generate(spotify_user.to_hash)
+
+    
+    @user.save
+
+  end
+
+  def create_playlist
+
+    if current_user.spotify_hash == nil
+      redirect_back fallback_location: root_url, alert: "Cannot Create Playlist, first login with Spotify!"
+    else
+      RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
+
+      hash = JSON.parse current_user.spot_hash
+      spotify_usr = RSpotify::User.new(hash)
+
+
+      @community = Community.find(params[:community_id])
+
+      @playlist = spotify_usr.create_playlist!(@community.title + " (SoundIt! Community)")
+      @tracks_to_add = []
+
+
+      @songs = Micropost.all.where(community_id: @community.id).limit(50)
+
+      for song in @songs
+        @tracks = RSpotify::Track.search(song.title)
+
+        for track in @tracks
+          if track.artists.first.name == song.artist
+            @tracks_to_add.push(track)
+            break
+          end
+        end
+
+      end
+
+      @playlist.replace_tracks!(@tracks_to_add)
+
+      redirect_back fallback_location: root_url, alert: "Playlist Created, check spotify"
+    end
   end
 
   def add_admin
@@ -73,6 +119,13 @@ class UsersController < ApplicationController
   end
 
   def spotify
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+
+    @user = User.find(current_user.id)
+    @user.spot_hash = JSON.generate(spotify_user.to_hash)
+    @user.save
+
+
     redirect_back fallback_location: root_url, alert: "Sign in Successul"
   end
 

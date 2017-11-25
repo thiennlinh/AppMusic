@@ -46,8 +46,12 @@
                                             <% else %>
                                                 <span class="_nonvoted_com"> <%= link_to "Add to my list", community_like_path(@community), method: :put %></span>
                                             <% end %>
+                                            <br><br>
+                                            <%= link_to 'Sign in with Spotify First,', '/auth/spotify' %><br>
+                                            <%= link_to 'Then Click Here to Generate Playlist for ' + @community.title, community_user_spotify_create_path(@community,current_user) %>
+                                            <br>
                                         <% else %>
-                                            <span class="_nonvoted_com"> <%= link_to "Login to add to your list", login_path %></span>
+                                            <span class="_nonvoted_com"> <%= link_to "Login to add to your list and create Spotify Playlist", login_path %></span>
                                         <% end %>
                                         <br>
                                         Created: <%= time_ago_in_words(@community.created_at) %> ago
