@@ -44,7 +44,7 @@
 					<div class="col s12">
 						<table class="bordered highlight">
 							<% for micropost in @microposts %>
-								<%= render partial: "microposts/micropost_playlist", locals: {micropost: micropost} %>
+								<%= render partial: "microposts/micropost_playlist", locals: {playlist: @playlist, micropost: micropost} %>
 							<% end %>
 						</table>
 					</div>
