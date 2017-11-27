@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
       @posts = current_user.microposts.limit(5)
       @playlists = current_user.playlists.all
       @current_playlists = current_user.playlists.all
-
+      @current = current_user.votes.up.for_type(Micropost).limit(5)
       @admins = User.all.where(admin: 't')
 
       @admin_error = false
