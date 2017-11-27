@@ -14,6 +14,23 @@ class CommunitiesController < ApplicationController
     def show
         @community = Community.find(params[:id])
         @feed = Micropost.where(community_id: @community.id).paginate(page: params[:page], :per_page => 15)
+
+        if logged_in?
+            @not_saved = true
+            if current_user.spot_hash != nil
+                @not_saved = false
+
+                @expiration_time = JSON.parse(current_user.spot_hash) 
+                @expiration_time = @expiration_time["credentials"]["expires_at"]
+                @current_time = DateTime.now.strftime('%s')
+    
+                @expired = true
+    
+                if(@expiration_time > @current_time.to_i)
+                    @expired = false
+                end
+            end
+        end
     end
 
     def new

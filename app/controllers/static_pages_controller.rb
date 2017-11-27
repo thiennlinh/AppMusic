@@ -44,19 +44,12 @@ class StaticPagesController < ApplicationController
 
       ## Do not store this on github!!!
       RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
-
-
       spotify_user = RSpotify::User.find('1224459409')
-
-
-
 
       @playlist = RSpotify::Playlist.find('1224459409','5EAbXQCZMXMLIsqKdKR25f')
       @total = @playlist.total
 
-
       @tracks_to_add = []
-
 
       for song in @songs
         @tracks = RSpotify::Track.search(song.title)
@@ -72,6 +65,6 @@ class StaticPagesController < ApplicationController
 
       @playlist.replace_tracks!(@tracks_to_add)
 
-      redirect_to spotify_path
+      redirect_back fallback_location: root_url, alert: "Front page playlist updated."
   end
 end

@@ -43,11 +43,10 @@ Rails.application.routes.draw do
     get 'spotify_create', to: 'communities#create_playlist'
     
     resources :users do 
-      get 'spotify_create', to: 'users#create_playlist'
+      get 'spotify_create', to: 'users#create_playlist_community'
     end
 
     resources :microposts do
-
       member do
         put "like", to: "microposts#upvote"
         put "dislike", to: "microposts#downvote"

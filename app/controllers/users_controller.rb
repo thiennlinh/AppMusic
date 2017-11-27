@@ -62,19 +62,15 @@ class UsersController < ApplicationController
 
   def spotify_user
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-
     @user = User.find(params[:id])
     ActiveRecord::Base.include_root_in_json = true
     @user.spot_hash = JSON.generate(spotify_user.to_hash)
-
-    
     @user.save
 
   end
 
-  def create_playlist
-
-    if current_user.spotify_hash == nil
+  def create_playlist_community
+    if current_user.spot_hash == nil
       redirect_back fallback_location: root_url, alert: "Cannot Create Playlist, first login with Spotify!"
     else
       RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
@@ -120,11 +116,9 @@ class UsersController < ApplicationController
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-
     @user = User.find(current_user.id)
     @user.spot_hash = JSON.generate(spotify_user.to_hash)
     @user.save
-
 
     redirect_back fallback_location: root_url, alert: "Sign in Successul"
   end
