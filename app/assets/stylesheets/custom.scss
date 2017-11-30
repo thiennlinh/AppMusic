@@ -19,6 +19,10 @@
     flex: 1 0 auto;
   }
 
+  a:hover {
+    filter: brightness(85%);
+  }
+
   .row_margin {
     margin-top: 90px;
   }
@@ -198,11 +202,41 @@
   }
 
   .button_mod {
+    color: #fff;
     background-color: #424242;
+  }
+
+  .button_mod a {
+    color: #fff;
   }
 
   .button_mod:hover {
     background-color: #212121;
+  }
+
+  .button_cont {
+    color: #fff;
+    background-color: $primary-color;
+  }
+
+  .button_cont a {
+    color: #fff;
+  }
+
+  .button_cont:hover {
+    background-color: #212121;
+  }
+
+  .dd li a {
+    color: $secondary-color;
+  }
+  .dd2 li a {
+    color: $primary-color;
+  }
+
+  .lh nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    line-height: 45px;
+    margin-left: 0px;
   }
 
   .login_small {

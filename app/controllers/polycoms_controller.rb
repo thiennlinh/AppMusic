@@ -93,7 +93,7 @@ class PolycomsController < ApplicationController
     private
         
         def get_micropost
-            @parent = Polycom.find(params[:id])
+            @parent = Polycom.find(params[:polycom_id])
             while @parent.commentable_type != "Micropost"
                 @parent = Polycom.find(@parent.commentable_id)
             end

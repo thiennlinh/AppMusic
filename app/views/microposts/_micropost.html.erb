@@ -8,11 +8,11 @@
                     <span class="_details_top">
 						[ Posted in <%= link_to Community.find(micropost.community_id).title, community_path(micropost.community_id) %> ]
                     </span>
-					<span class="right">
-						<%= render partial: "shared/add_to_playlist_button", locals: {micropost: micropost} %>
-                    </span>
                     <br>
                     <span class="_title"><span class="_diamond hide">◊</span><%= link_to micropost.title, micropost %></span> <span class="_artist_title">By <%= micropost.artist %></span>
+                    <span class="right">
+						<%= render partial: "shared/add_to_playlist_button", locals: {micropost: micropost} %>
+                    </span>
                     <br><span class="_details">Comments (<%= micropost.polycoms.count %>)
                     <% if current_user?(micropost.user) %> |
                             <%= link_to "Delete Post", micropost, method: :delete, data: { confirm: "Delete this post?"}%>
