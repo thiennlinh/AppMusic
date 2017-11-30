@@ -70,13 +70,13 @@ class CommunitiesController < ApplicationController
     def upvote
         @community = Community.find(params[:community_id])
         @community.upvote_by current_user
-        redirect_to @community
+        redirect_back fallback_location: root_url, alert: "Added " + @community.title + " your list."
       end
   
       def downvote
         @community = Community.find(params[:community_id])
         @community.downvote_by current_user
-        redirect_to @community
+        redirect_back fallback_location: root_url
       end
       
       def score
