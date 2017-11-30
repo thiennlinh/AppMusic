@@ -33,7 +33,7 @@ class PlaylistsController < ApplicationController
 			flash[:success] = "Playlist created!"
             redirect_to root_url
 		else
-			render 'static_pages/home'
+			render 'new'
 		end
 	end
 
