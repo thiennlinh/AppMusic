@@ -209,9 +209,10 @@
                                 <div class="col m12 content_card z-depth-1">
                                     <table class="bordered highlight">
                                         <% if @current_playlists.length  == 0 %>
+                                            <br>
                                             <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>
                                             You do not appear to have any playlists.<br>
-                                            <%= link_to "Create one?", new_playlist_path %></span><br>
+                                            <%= link_to "Create one?", new_playlist_path %></span><br><br>
                                         <% else %>
                                             <% for play in @current_playlists %>
                                                 <tr><td class="fp_song_title"><%= link_to play.name, playlist_path(play) %></tr></td>
@@ -223,17 +224,26 @@
                         </div>
 
                         <div class="col l4 m12 s12">
-                            <span class="_title"> My Posts (Top 5) </span>
+                            <span class="_title"> My Posts <% if @posts.length < 5 %> <% if @posts.length != 0 %>(Top <%= @posts.length %>)<% end %> <% else %> (Top 5) <% end %> </span>
                             <div class="row">
                                 <div class="col s12 content_card z-depth-1">
                                     <table class="bordered highlight">
-                                        <% for micropost in @posts %>
-                                            <tr>
-                                                <td class="fp_song_title"><span class="_nonvoted_trend"><%= micropost.cached_votes_score %> pts</span> <%= link_to micropost.title, micropost %> by <%= micropost.artist %></td>
-                                            </tr>
+                                        <% if @posts.length == 0 %>
+                                           <br>
+                                            <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>
+                                            You do not appear to have any Posts.<br>
+                                            <%= link_to "Post Something?", new_micropost_path %><br><br>
+                                        <% else %>
+                                            <% for micropost in @posts %>
+                                                <tr>
+                                                    <td class="fp_song_title"><span class="_nonvoted_trend"><%= micropost.cached_votes_score %> pts</span> <%= link_to micropost.title, micropost %> by <%= micropost.artist %></td>
+                                                </tr>
+                                            <% end %>
                                         <% end %>
                                     </table>
-                                    <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                    <% if @posts.length != 0 %>
+                                        <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                    <% end %>
                                 </div>
 
                             </div>
@@ -244,17 +254,25 @@
                             <div class="row">
                                 <div class="col s12 content_card z-depth-1">
                                     <table class="bordered highlight">
-                                        <% @current = current_user.votes.up.for_type(Micropost).limit(5) %>
-                                        <% for micropost in @current %>
-                                            <tr>
-                                                <td class="fp_song_title">
-                                                    <% @find = Micropost.find(micropost.votable_id) %>
-                                                    <span class="_nonvoted_trend"><%= @find.cached_votes_score %> pts</span> <%= link_to @find.title, @find %> by <%= @find.artist %>
-                                                </td>
-                                            </tr>
+                                        <% if @current.length == 0 %>
+                                           <br>
+                                            <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>
+                                            You do not appear to have any Posts.<br>
+                                            <%= link_to "Post Something?", new_micropost_path %><br><br>
+                                        <% else %>
+                                            <% for micropost in @current %>
+                                                <tr>
+                                                    <td class="fp_song_title">
+                                                        <% @find = Micropost.find(micropost.votable_id) %>
+                                                        <span class="_nonvoted_trend"><%= @find.cached_votes_score %> pts</span> <%= link_to @find.title, @find %> by <%= @find.artist %>
+                                                    </td>
+                                                </tr>
+                                            <% end %>
                                         <% end %>
                                     </table>
-                                    <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                    <% if @current.length != 0 %>
+                                        <span class="_details_trend right"><%= link_to "More...", current_user %>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>

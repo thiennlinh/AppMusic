@@ -91,14 +91,6 @@ $(".static_pages.home").ready ->
 		else
 			alert 'No Next Song'
 
-	$('.playlist-listing').click ->
-		jumpTo = playQueue.getById($(this).data('id'))
-		if jumpTo
-			window.player.loadVideoById(parse_youtube_id jumpTo.url)
-
-	$('.playlist-listing-row').hover ->
-		$('#playlist-button-' + $(this).data('id')).show()
-	, ->
-		$('#playlist-button-' + $(this).data('id')).hide()
-
-	return
+	$(window).resize ->
+		vidWidth = $('#video-container').width()
+		window.player.setSize(vidWidth, vidWidth * (2.0/3.0))

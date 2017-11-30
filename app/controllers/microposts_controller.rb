@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
 		if logged_in?
 			@micropost = current_user.microposts.build(micropost_params)
 			if @micropost.save
-				redirect_to root_url
+				redirect_to @micropost
 			else
 				redirect_to new_micropost_path, alert: "Error! Fields cannot be blank!"
 			end
@@ -28,13 +28,13 @@ class MicropostsController < ApplicationController
     def upvote
       @micropost = Micropost.find(params[:micropost_id])
       @micropost.upvote_by current_user
-      redirect_to root_path
+      redirect_back fallback_location: root_url
     end
 
     def downvote
       @micropost = Micropost.find(params[:micropost_id])
       @micropost.downvote_by current_user
-      redirect_to root_path
+      redirect_back fallback_location: root_url
     end
 
     def score
