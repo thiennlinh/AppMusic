@@ -16,7 +16,7 @@ Soundit! was built using the Rails framework and works with either a postgresql 
 ## Testing
 * Navigate to the repo in the terminal
 * `rails test --verbose` will run the automatic testing suite
-* Note* To see test information look through .rb files in /test
+* Note* To see test files look through .rb files in /test
 
 ## Deployment
 * Clone from Github
