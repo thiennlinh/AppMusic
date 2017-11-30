@@ -33,25 +33,26 @@
 				<% else %>
 					<div class="logged_in hide-on-med-and-down">
 						Welcome,  <%= link_to current_user_name, current_user %>.
-						<% if current_user.admin %>
-							<%= link_to "(Admin Panel)", admin_index_path %>
-						<% end %>
 					</div>
 				<% end %>
 
 				<div class="nav_box z-depth-3 hide-on-med-and-down">
 					<ul class="left hide-on-med-and-down">
 						<li><%= link_to "Home", root_path %></li>
-						<li><%= link_to "Add Song", new_path %></li>
-						<li><%= link_to "Add Playlist", new_playlist_path %></li>
-						<li><%= link_to "Add Community", new_community_path %></li>
+						<li><a class="dropdown-button" href="#!" data-activates="dropdown33">Contribute<i class="material-icons right lh">arrow_drop_down</i></a></li>
+	  					<li><a class="dropdown-button" href="#!" data-activates="dropdown34">Consume<i class="material-icons right lh">arrow_drop_down</i></a></li>
+						<% if logged_in? %>
+							<% if current_user.admin %>
+								<li><a class="dropdown-button" href="#!" data-activates="dropdown32">Admin<i class="material-icons right lh">arrow_drop_down</i></a></li>
+							<% end %>
+						<% end %>
+						
 						<li><%= link_to "About", about_path %></li>
 					</ul>
 
 					<ul class="right hide-on-med-and-down">
 						<% if logged_in? %>
-							<li><%= link_to "Users", users_path %></li>
-							<li><%= link_to "Profile", current_user %></li>
+							<li><%= link_to "My Profile", current_user %></li>
 							<li><%= link_to "Settings", edit_user_path(current_user) %></li>
 							<li><%= link_to "Log out", logout_path, method: :delete %></li>
 						<% else %>
@@ -64,13 +65,45 @@
 
 
 		</nav>
+<% if logged_in? %>
+	<% if current_user.admin %>
+		<!-- Dropdown Structure -->
+		<ul id="dropdown32" class="dropdown-content dd2" style="width: 150%">
+			<li><%= link_to "Admin Index", admin_index_path %></li>
+			<li><%= link_to "Content Moderation", com_mgmt_path %></li>
+			<li><%= link_to "User Moderation", usr_mgmt_path %></li>
+			<li><%= link_to "Admin Control", admin_mgmt_path %></li>
+			<li><%= link_to "Spotify Controller", spotify_mgmt_path %></li>
+
+		</ul>
+	<% end %>
+<% end %>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown33" class="dropdown-content dd2">
+		<% if logged_in? %>
+			<li><%= link_to "Song", new_path %></li>
+			<li><%= link_to "Playlist", new_playlist_path %></li>
+			<li><%= link_to "Community", new_community_path %></li>
+		<% else %>
+			<li><%= link_to "Log in", login_path %>
+		<% end %>
+</ul>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown34" class="dropdown-content dd2">
+		<li><%= link_to "All Songs", microposts_path %></li>
+		<% if logged_in? %>
+			<li><%= link_to "My Playlists", new_playlist_path %></li>
+		<% end %>
+		<li><%= link_to "Communities", communities_path %></li>
+</ul>
 
 		<div class="hide-on-large-only">
-
 			<div>
 				<ul class="collapsible" data-collapsible="accordion">
 					<li>
-					<div class="collapsible-header mobile_head z-depth-1"><i class="material-icons" style="font-size:50px;">menu</i><span class="_mobile_header">&nbsp;&nbsp;&nbsp;SoundIt!</span></div>
+					<div class="collapsible-header mobile_head z-depth-1" style="color:#fff;"><i class="material-icons" style="font-size:50px;">menu</i><span class="_mobile_header" >&nbsp;&nbsp;&nbsp;SoundIt!</span></div>
 					<div class="collapsible-body mobile_bod">
 
 						<% if logged_in? %>
@@ -120,7 +153,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s16">
-					<%= debug(params) if Rails.env.development? %>
+					<%# <%= debug(params) if Rails.env.development? %>
 				</div>
 			</div>
 		</div>
