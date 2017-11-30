@@ -19,7 +19,7 @@
                                 </div>
                             <% else %>
                                 <% for com in @community_listings %>
-                                    <%= render partial: "static_pages/topcom", locals: {com: com} %>
+                                    <%= render partial: "communities/abbr", locals: {com: com} %>
                                 <% end %>
                             <% end %>
                         </div>
