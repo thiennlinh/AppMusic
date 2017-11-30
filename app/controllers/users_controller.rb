@@ -55,7 +55,7 @@ class UsersController < ApplicationController
         redirect_back fallback_location: root_url, alert: "Successfully Removed User!"
       end
 
-    else 
+    else
       redirect_back fallback_location: root_url, alert: "Cannot remove only User!"
     end
   end
@@ -86,6 +86,42 @@ class UsersController < ApplicationController
 
 
       @songs = Micropost.all.where(community_id: @community.id).limit(50)
+
+      for song in @songs
+        @tracks = RSpotify::Track.search(song.title)
+
+        for track in @tracks
+          if track.artists.first.name == song.artist
+            @tracks_to_add.push(track)
+            break
+          end
+        end
+
+      end
+
+      @playlist.replace_tracks!(@tracks_to_add)
+
+      redirect_back fallback_location: root_url, alert: "Playlist Created, check spotify"
+    end
+  end
+
+  def create_playlist_playlist
+    if current_user.spot_hash == nil
+      redirect_back fallback_location: root_url, alert: "Cannot Create Playlist, first login with Spotify!"
+    else
+      RSpotify.authenticate("7eaf81c8e2384e0f9b021058e3141882", "580dd6fcb0e747b8b6e4d38f9e0f782b")
+
+      hash = JSON.parse current_user.spot_hash
+      spotify_usr = RSpotify::User.new(hash)
+
+
+      @playlist_soundit = Playlist.find(params[:playlist_id])
+
+      @playlist = spotify_usr.create_playlist!(@playlist_soundit.name + " (SoundIt! Playlist)")
+      @tracks_to_add = []
+
+
+      @songs = @playlist_soundit.microposts.all.limit(50)
 
       for song in @songs
         @tracks = RSpotify::Track.search(song.title)
@@ -140,7 +176,7 @@ class UsersController < ApplicationController
     end
 
     def edit_params
-      @user = User.find(params[:id]) 
+      @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
 end

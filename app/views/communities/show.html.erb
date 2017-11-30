@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col m12 s12">
                         <div class="row">
-                            <div class="col l8 m12 s12"> 
+                            <div class="col l8 m12 s12">
                                 <span class="_title"><%= @community.title %></span>
 
                                 <div class="row">
@@ -33,12 +33,12 @@
                                 </div>
                             </div>
 
-                            <div class="col l4 m12 s12"> 
+                            <div class="col l4 m12 s12">
                                 <span class="_title"> Community Details</span>
 
                                 <div class="row">
                                     <div class="col s12 content_card z-depth-1" >
-                                       
+
 
                                         <% if logged_in? %>
                                             <br>
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
 
-                                <span class="_title"> Export to Spotify</span>
+                                
 
                                 <div class="row">
                                     <div class="col s12 content_card z-depth-1" >
@@ -75,7 +75,7 @@
                                                         <span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>Your account's Spotify session has expired, please renew it
                                                         <%= link_to "by clicking here.", '/auth/spotify' %></span>
                                                     <% else %>
-                                                        <span><%= link_to 'Create Spotify Playlist', community_user_spotify_create_path(@community,current_user) %> to generate a playlist for 
+                                                        <span><%= link_to 'Create Spotify Playlist', community_user_spotify_create_path(@community,current_user) %> to generate a playlist for
                                                         <%= @community.title %></span>
                                                     <% end %>
                                                 <% end %>

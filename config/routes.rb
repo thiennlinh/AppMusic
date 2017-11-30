@@ -41,8 +41,8 @@ Rails.application.routes.draw do
     get "moderate", to: "communities#moderation"
     get 'spotify', to: 'communities#spotify_helper'
     get 'spotify_create', to: 'communities#create_playlist'
-    
-    resources :users do 
+
+    resources :users do
       get 'spotify_create', to: 'users#create_playlist_community'
     end
 
@@ -77,6 +77,13 @@ Rails.application.routes.draw do
   resources :playlists do
   	put "addpost/:post_id", to: "playlists#addpost", as: 'addpost'
 	put "removepost/:post_id", to: "playlists#removepost", as: 'removepost'
+
+	get 'spotify', to: 'playlists#spotify_helper'
+    get 'spotify_create', to: 'playlists#create_playlist'
+
+    resources :users do
+      get 'spotify_create', to: 'users#create_playlist_playlist'
+    end
   end
 
 
