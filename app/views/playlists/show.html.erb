@@ -7,16 +7,19 @@
 
             <div class="col s12">
                 <%# Name %>
-                <div class="content_title_post">
-                    <%= @playlist.name %>
-                </div>
+				<div class="content_title_post">
+					<i class="material-icons" style="font-size: 35px">graphic_eq</i><%= @playlist.name %>
+				</div>
+
 
                 <%# Playlist Information %>
                 <div class="row row_smal_margin content_card z-depth-1">
                     <div class="col s9">
-                        <br><span class="_details">Songs (<%= @playlist.microposts.count %>)
+						<br>
+                    	<span class="_diamond">Songs (<%= @playlist.microposts.count %>)
                         | Posted <%= time_ago_in_words(@playlist.created_at) %> ago by <%= link_to @playlist.user.name, @playlist.user %></span>
-                    </div>
+						<br> &nbsp;
+					</div>
                 </div>
 
 				</br>
