@@ -49,6 +49,34 @@
 						</table>
 					</div>
 				</div>
+
+				<%# Spotify Integration %>
+				<div class="row">
+					<div class="col s12 content_card z-depth-1" >
+
+
+						<% if logged_in? %>
+							<% if @not_saved %>
+								<span>First connect your account to <%= link_to "Spotify!", '/auth/spotify' %></span>
+							<% else %>
+
+								<% if @expired %>
+									<span>Your account's Spotify session has expired, please renew it
+									 <%= link_to "by clicking here.", '/auth/spotify' %></span>
+								<% else %>
+									 <span><%= link_to 'Create Spotify Playlist', playlist_user_spotify_create_path(@playlist,current_user) %> to generate a playlist for
+									 <%= @playlist.name %></span>
+								<% end %>
+							<% end %>
+
+							<br><br>
+
+						<% else %>
+							<span class="_nonvoted_com"> <%= link_to "Login to add to your list and create Spotify Playlist", login_path %></span>
+						<% end %>
+					</div>
+				</div>
+
             </div>
         </div>
 
