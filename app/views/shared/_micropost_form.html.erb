@@ -10,7 +10,7 @@
     <%= f.collection_select :community_id, Community.order(:title), :id, :title, {:prompt=> "Choose a Community"}, {:class=>'helper'} %>
     <br><span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>Communities are based off of genre however there is not one correct genre for any song.
     <br> Not finding the right community? Create one <%= link_to "here.", new_community_path %>
-    <%= f.text_field :url, placeholder: "YouTube URL (Optional)" %>
+    <%= f.text_field :url, placeholder: "YouTube URL" %>
     <%= f.text_area :content, placeholder: "Start off the conversation..." %>
 
   </div>

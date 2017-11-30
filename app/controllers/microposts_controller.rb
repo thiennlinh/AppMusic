@@ -87,6 +87,11 @@ class MicropostsController < ApplicationController
       end
     end
 
+    def index
+        @feed = Micropost.paginate(page: params[:page], :per_page => 15)
+        @community_listings = Community.all.limit(1)
+    end
+
 private
 
 	def require_permission
