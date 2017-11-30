@@ -11,7 +11,7 @@ you "like", exporting them to Spotify and otherwise allowing you and your friend
 personal music experience.
 
 ## About
-Soundit! was built using the Rails framework and works with either a postgresql or sqlite3 database.
+Soundit! was built using for EECS 448 at the University of Kansas and uses the Rails framework. It works with either a postgresql or sqlite3 database.
 
 ## Testing
 * Navigate to the repo in the terminal
@@ -40,6 +40,8 @@ Soundit! was built using the Rails framework and works with either a postgresql 
     * Fully featured admin console ensures unwanted content can be removed quickly
 * Global Frontpage playlist can be created and added to by users via posted songs
 * Frontpage Spotify playlist and youtube playlists allow quick and convenient listening
+    * Users can create spotify playlists out of communities
+    * Users can create spotify playlists out of their own site-created playlists
 
 ### Notes
 * Styling based on Google Material Design
@@ -50,4 +52,5 @@ Soundit! was built using the Rails framework and works with either a postgresql 
 ### Sources
 * Post model adapted from [Rails Guides](http://guides.rubyonrails.org/)
 * Users and sessions adapted from [Ruby on Rails Tutorial](https://www.railstutorial.org/)
+* Polymorphic comments adapted from [Go Rails](https://www.youtube.com/watch?v=fzz62HWGNNA)
 * [Materialize CSS](http://materializecss.com)
