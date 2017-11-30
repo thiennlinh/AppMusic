@@ -19,6 +19,10 @@
     flex: 1 0 auto;
   }
 
+  a:hover {
+    filter: brightness(85%);
+  }
+
   .row_margin {
     margin-top: 90px;
   }
@@ -198,7 +202,12 @@
   }
 
   .button_mod {
+    color: #fff;
     background-color: #424242;
+  }
+
+  .button_mod a {
+    color: #fff;
   }
 
   .button_mod:hover {
