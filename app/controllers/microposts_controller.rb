@@ -7,9 +7,9 @@ class MicropostsController < ApplicationController
 			if @micropost.save
 				redirect_to @micropost
 			else
-				redirect_to new_micropost_path, alert: "Error! Fields cannot be blank!"
+				render 'new'
 			end
-		end
+        end
     end
 
     def show
