@@ -71,17 +71,27 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-correct_user">#correct_user</a>
+    
     <li ><a href="#method-i-create">#create</a>
     
     <li ><a href="#method-i-destroy">#destroy</a>
     
     <li ><a href="#method-i-downvote">#downvote</a>
     
+    <li ><a href="#method-i-edit">#edit</a>
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-moderation">#moderation</a>
+    
     <li ><a href="#method-i-new">#new</a>
     
     <li ><a href="#method-i-score">#score</a>
     
     <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-update">#update</a>
     
     <li ><a href="#method-i-upvote">#upvote</a>
     
@@ -119,6 +129,42 @@
        </header>
 
     
+      <div id="method-i-correct_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">correct_user</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="correct_user-source">
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">correct_user</span>
+    <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  <span class="ruby-comment">#find the post</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">current_user?</span>(<span class="ruby-ivar">@post</span>.<span class="ruby-identifier">user</span>)
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">user_path</span>(<span class="ruby-identifier">current_user</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-create" class="method-detail ">
         
         <div class="method-heading">
@@ -140,14 +186,15 @@
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 4</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-    <span class="ruby-ivar">@micropost</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">micropost_params</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">save</span>
-      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Micropost created!&quot;</span>
-      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;static_pages/home&#39;</span>
-    <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">logged_in?</span>
+                      <span class="ruby-ivar">@micropost</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">micropost_params</span>)
+                      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">save</span>
+                              <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@micropost</span>
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;new&#39;</span>
+                      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -177,8 +224,10 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+              <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">community_moderate_path</span>(<span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">community_id</span>), <span class="ruby-identifier">alert</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Post Deleted&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -209,11 +258,119 @@
 
           
           <div class="method-source-code" id="downvote-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">downvote</span>
-  <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:micropost_id</span>])
   <span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">downvote_by</span> <span class="ruby-identifier">current_user</span>
-  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
+  <span class="ruby-identifier">redirect_back</span> <span class="ruby-identifier">fallback_location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">root_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin</span>
+        <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+    <span class="ruby-ivar">@feed</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">15</span>)
+    <span class="ruby-ivar">@community_listings</span> = <span class="ruby-constant">Community</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">limit</span>(<span class="ruby-value">1</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-moderation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">moderation</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="moderation-source">
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">moderation</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin</span>
+      <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:micropost_id</span>])
+  <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -244,9 +401,14 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 39</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@micropost</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">logged_in?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Community</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;First create a Community.&quot;</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">new_community_path</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@micropost</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">logged_in?</span>
+    <span class="ruby-ivar">@communities</span> = <span class="ruby-constant">Community</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -277,7 +439,7 @@
 
           
           <div class="method-source-code" id="score-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">score</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_upvotes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_downvotes</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -310,11 +472,56 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">user_id</span>)
 
+  <span class="ruby-ivar">@micropost_copy</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+
+      <span class="ruby-identifier">regex</span> = <span class="ruby-node">/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&amp;v=)([^#\&amp;\?]*).*/</span>
+      <span class="ruby-identifier">match</span> = <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">match</span>(<span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">url</span>)
+      <span class="ruby-comment">#if match and match[2].length == 11</span>
+      <span class="ruby-ivar">@embed_url</span> = <span class="ruby-string">&quot;http://youtube.com/embed/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+    <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">micropost_params</span>)
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">com_mgmt_path</span> <span class="ruby-identifier">alert</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Post Updated&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;edit&#39;</span>
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -345,11 +552,11 @@
 
           
           <div class="method-source-code" id="upvote-source">
-            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 20</span>
+            <pre><span class="ruby-comment"># File app/controllers/microposts_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">upvote</span>
-  <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@micropost</span> = <span class="ruby-constant">Micropost</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:micropost_id</span>])
   <span class="ruby-ivar">@micropost</span>.<span class="ruby-identifier">upvote_by</span> <span class="ruby-identifier">current_user</span>
-  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
+  <span class="ruby-identifier">redirect_back</span> <span class="ruby-identifier">fallback_location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">root_url</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

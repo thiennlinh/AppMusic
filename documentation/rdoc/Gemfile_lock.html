@@ -69,11 +69,15 @@
   
     <li><a href="./app/assets/config/manifest_js.html">manifest.js</a>
   
+    <li><a href="./app/assets/javascripts/admin_coffee.html">admin.coffee</a>
+  
     <li><a href="./app/assets/javascripts/application_js.html">application.js</a>
   
     <li><a href="./app/assets/javascripts/cable_js.html">cable.js</a>
   
-    <li><a href="./app/assets/javascripts/comments_coffee.html">comments.coffee</a>
+    <li><a href="./app/assets/javascripts/communities_coffee.html">communities.coffee</a>
+  
+    <li><a href="./app/assets/javascripts/jquery-readyselector_js.html">jquery-readyselector.js</a>
   
     <li><a href="./app/assets/javascripts/microposts_coffee.html">microposts.coffee</a>
   
@@ -83,7 +87,7 @@
   
     <li><a href="./app/assets/javascripts/playlists_coffee.html">playlists.coffee</a>
   
-    <li><a href="./app/assets/javascripts/posts_coffee.html">posts.coffee</a>
+    <li><a href="./app/assets/javascripts/polycoms_coffee.html">polycoms.coffee</a>
   
     <li><a href="./app/assets/javascripts/sessions_coffee.html">sessions.coffee</a>
   
@@ -95,9 +99,11 @@
   
     <li><a href="./app/assets/stylesheets/_variables_scss.html">_variables.scss</a>
   
+    <li><a href="./app/assets/stylesheets/admin_scss.html">admin.scss</a>
+  
     <li><a href="./app/assets/stylesheets/application_css.html">application.css</a>
   
-    <li><a href="./app/assets/stylesheets/comments_scss.html">comments.scss</a>
+    <li><a href="./app/assets/stylesheets/communities_scss.html">communities.scss</a>
   
     <li><a href="./app/assets/stylesheets/custom_scss.html">custom.scss</a>
   
@@ -109,7 +115,7 @@
   
     <li><a href="./app/assets/stylesheets/playlists_scss.html">playlists.scss</a>
   
-    <li><a href="./app/assets/stylesheets/posts_scss.html">posts.scss</a>
+    <li><a href="./app/assets/stylesheets/polycoms_scss.html">polycoms.scss</a>
   
     <li><a href="./app/assets/stylesheets/sessions_scss.html">sessions.scss</a>
   
@@ -119,11 +125,13 @@
   
     <li><a href="./app/assets/stylesheets/welcome_scss.html">welcome.scss</a>
   
-    <li><a href="./app/views/comments/_comment.html">_comment</a>
-  
     <li><a href="./config_ru.html">config.ru</a>
   
-    <li><a href="./doc/product_backlog_txt.html">product_backlog</a>
+    <li><a href="./documentation/meeting_log_txt.html">meeting_log</a>
+  
+    <li><a href="./documentation/product_backlog_md.html">product_backlog</a>
+  
+    <li><a href="./documentation/sprint_backlog_md.html">sprint_backlog</a>
   
     <li><a href="./log/development_log.html">development.log</a>
   
@@ -146,8 +154,6 @@
     <li><a href="./public/favicon_ico.html">favicon.ico</a>
   
     <li><a href="./public/robots_txt.html">robots</a>
-  
-    <li><a href="./tmp/pids/server_pid.html">server.pid</a>
   
     <li><a href="./tmp/restart_txt.html">restart</a>
   
@@ -228,13 +234,20 @@ specs:
   coffee-script-source (1.12.2)
   concurrent-ruby (1.0.5)
   crass (1.0.2)
+  domain_name (0.5.20170404)
+    unf (&gt;= 0.0.5, &lt; 1.0.0)
   erubi (1.7.0)
   execjs (2.7.0)
   faker (1.7.3)
     i18n (~&gt; 0.5)
+  faraday (0.12.2)
+    multipart-post (&gt;= 1.2, &lt; 3)
   ffi (1.9.18)
   globalid (0.4.0)
     activesupport (&gt;= 4.2.0)
+  hashie (3.5.6)
+  http-cookie (1.0.3)
+    domain_name (~&gt; 0.5)
   i18n (0.9.0)
     concurrent-ruby (~&gt; 1.0)
   jbuilder (2.7.0)
@@ -244,6 +257,7 @@ specs:
     rails-dom-testing (&gt;= 1, &lt; 3)
     railties (&gt;= 4.2.0)
     thor (&gt;= 0.14, &lt; 2.0)
+  jwt (1.5.6)
   listen (3.1.5)
     rb-fsevent (~&gt; 0.9, &gt;= 0.9.4)
     rb-inotify (~&gt; 0.9, &gt;= 0.9.7)
@@ -263,14 +277,30 @@ specs:
   mini_portile2 (2.3.0)
   minitest (5.10.3)
   multi_json (1.12.2)
+  multi_xml (0.6.0)
+  multipart-post (2.0.0)
+  netrc (0.11.0)
   nio4r (2.1.0)
   nokogiri (1.8.1)
     mini_portile2 (~&gt; 2.3.0)
+  oauth2 (1.4.0)
+    faraday (&gt;= 0.8, &lt; 0.13)
+    jwt (~&gt; 1.0)
+    multi_json (~&gt; 1.3)
+    multi_xml (~&gt; 0.5)
+    rack (&gt;= 1.2, &lt; 3)
+  omniauth (1.7.1)
+    hashie (&gt;= 3.4.6, &lt; 3.6.0)
+    rack (&gt;= 1.6.2, &lt; 3)
+  omniauth-oauth2 (1.3.1)
+    oauth2 (~&gt; 1.0)
+    omniauth (~&gt; 1.2)
   public_suffix (3.0.0)
   puma (3.10.0)
   rack (2.0.3)
   rack-test (0.7.0)
     rack (&gt;= 1.0, &lt; 3)
+  railroady (1.5.3)
   rails (5.1.4)
     actioncable (= 5.1.4)
     actionmailer (= 5.1.4)
@@ -302,6 +332,13 @@ specs:
   rb-fsevent (0.10.2)
   rb-inotify (0.9.10)
     ffi (&gt;= 0.5.0, &lt; 2)
+  rest-client (2.0.2)
+    http-cookie (&gt;= 1.0.2, &lt; 2.0)
+    mime-types (&gt;= 1.16, &lt; 4.0)
+    netrc (~&gt; 0.8)
+  rspotify (1.24.0)
+    omniauth-oauth2 (~&gt; 1.3.1)
+    rest-client (~&gt; 2.0.2)
   ruby_dep (1.5.0)
   rubyzip (1.2.1)
   sass (3.5.2)
@@ -334,13 +371,13 @@ specs:
   thor (0.20.0)
   thread_safe (0.3.6)
   tilt (2.0.8)
-  turbolinks (5.0.1)
-    turbolinks-source (~&gt; 5)
-  turbolinks-source (5.0.3)
   tzinfo (1.2.3)
     thread_safe (~&gt; 0.1)
   uglifier (3.2.0)
     execjs (&gt;= 0.3.0, &lt; 3)
+  unf (0.1.4)
+    unf_ext
+  unf_ext (0.0.7.4)
   web-console (3.5.1)
     actionview (&gt;= 5.0)
     activemodel (&gt;= 5.0)
@@ -371,15 +408,17 @@ jbuilder (~&gt; 2.5)
 jquery-rails
 listen (&gt;= 3.0.5, &lt; 3.2)
 materialize-sass
+omniauth (~&gt; 1.7.1)
 puma (~&gt; 3.7)
+railroady
 rails (~&gt; 5.1.4)
 rails-controller-testing
+rspotify (~&gt; 1.24.0)
 sass-rails (~&gt; 5.0)
 selenium-webdriver
 spring
 spring-watcher-listen (~&gt; 2.0.0)
 sqlite3
-turbolinks (~&gt; 5)
 tzinfo-data
 uglifier (&gt;= 1.3.0)
 web-console (&gt;= 3.3.0)
@@ -387,7 +426,7 @@ will_paginate (= 3.1.5)</pre>
 
 <p>BUNDLED WITH</p>
 
-<pre>1.16.0.pre.2</pre>
+<pre>1.16.0</pre>
 </main>
 
 

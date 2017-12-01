@@ -65,17 +65,7 @@
 
     
     
-    <!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-password_reset">#password_reset</a>
-    
-  </ul>
-</div>
-
   </div>
 </nav>
 
@@ -104,50 +94,6 @@ href="http://localhost:3000/rails/mailers/user_mailer">localhost:3000/rails/mail
     
 
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-    
-      <div id="method-i-password_reset" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">password_reset</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Preview this email at <a
-href="http://localhost:3000/rails/mailers/user_mailer/password_reset">localhost:3000/rails/mailers/user_mailer/password_reset</a></p>
-          
-          
-
-          
-          <div class="method-source-code" id="password_reset-source">
-            <pre><span class="ruby-comment"># File test/mailers/previews/user_mailer_preview.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">password_reset</span>
-  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">first</span>
-  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">reset_token</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new_token</span>
-  <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">password_reset</span>(<span class="ruby-identifier">user</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-    </section>
-  
   </section>
 </main>
 

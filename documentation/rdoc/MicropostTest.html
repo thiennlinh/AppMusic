@@ -134,7 +134,7 @@
             <pre><span class="ruby-comment"># File test/models/micropost_test.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">users</span>(<span class="ruby-value">:michael</span>)
-  <span class="ruby-ivar">@micropost</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">content</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Lorem ipsum&quot;</span>)
+  <span class="ruby-ivar">@micropost</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">microposts</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">content</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Lorem ipsum&quot;</span>, <span class="ruby-identifier">artist</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;test&quot;</span>, <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;title&quot;</span>, <span class="ruby-identifier">community_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
