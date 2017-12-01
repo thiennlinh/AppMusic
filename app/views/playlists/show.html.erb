@@ -7,15 +7,23 @@
 
             <div class="col s12">
                 <%# Name %>
-				<div class="row row_smal_margin content_title_post">
-					<div class="col s9">
-						<i class="material-icons" style="font-size: 35px">queue_music</i><%= @playlist.name %>
-					</div>
+
+				<div class="col s12">
+                	<div class="content_title">
+                		<i class="material-icons" style="font-size: 35px">queue_music</i><%= @playlist.name %>
+                	</div>
 				</div>
+
+				<br>
 
 				<div class="row">
 					<div class="col l8 m12 s12">
 		                <%# Playlist Information %>
+
+						<%# This works and I don't know why; please don't touch %>
+						<span class="_title"> </span>
+						<br>
+
 		                <div class="row row_smal_margin content_card z-depth-1">
 		                    <div class="col s9">
 								<br>
@@ -60,31 +68,38 @@
 					<div class="col l4 m12 s12">
 
 						<%# Spotify Integration %>
-						<span class="_title"> Export to Spotify</span>
+						<span class="_title">Export to Spotify</span>
 
 						<div class="row">
 							<div class="col s12 content_card z-depth-1" >
-
+							   <br>
 
 								<% if logged_in? %>
-									<% if @not_saved %>
-										<span>First connect your account to <%= link_to "Spotify!", '/auth/spotify' %></span>
-									<% else %>
 
-										<% if @expired %>
-											<span>Your account's Spotify session has expired, please renew it
-											 <%= link_to "by clicking here.", '/auth/spotify' %></span>
+									<% if @playlist.microposts.length != 0 %>
+
+										<% if @not_saved %>
+											<span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>First connect your account to <%= link_to "Spotify!", '/auth/spotify' %></span>
 										<% else %>
-											 <span><%= link_to 'Create Spotify Playlist', playlist_user_spotify_create_path(@playlist,current_user) %> to generate a playlist for
-											 <%= @playlist.name %></span>
+
+											<% if @expired %>
+												<span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i>Your account's Spotify session has expired, please renew it
+												<%= link_to "by clicking here.", '/auth/spotify' %></span>
+											<% else %>
+												<span><%= link_to 'Create Spotify Playlist', playlist_user_spotify_create_path(@playlist,current_user) %> to generate a playlist for
+												<%= @playlist.name %></span>
+											<% end %>
 										<% end %>
+
+										<br><br>
+									<% else %>
+										<span class="_diamond"><i class="material-icons" style="font-size: 14px">info_outline</i> Nothing to export! <%= link_to "Add a Song.", new_micropost_path %></span>
 									<% end %>
 
-									<br><br>
-
 								<% else %>
-									<span class="_nonvoted_com"> <%= link_to "Login to add to your list and create Spotify Playlist", login_path %></span>
+									<span class="_diamond"> <%= link_to "Login ", login_path %>to add to your list and create Spotify Playlist</span><br>
 								<% end %>
+
 							</div>
 						</div>
 
