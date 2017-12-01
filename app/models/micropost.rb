@@ -8,5 +8,9 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 1000 }
   validates :title, presence: true, length: { maximum: 156 }
   validates :artist, presence: true
+
+  VALID_URL_REGEX = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+  validates :url, presence: true, format: { with: VALID_URL_REGEX, :multiline => true  }
+  
   validates :community_id, presence: true
 end
