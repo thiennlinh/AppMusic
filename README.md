@@ -1,4 +1,4 @@
-Note* /documentation/rdoc is generated documentation code, the branch that contains the artifacts is [project4_documentation](https://github.com/Git-Schwifty-448/Soundit-/tree/project4_doc)
+The branch that contains the artifacts and documentation is [project4_doc.](https://github.com/Git-Schwifty-448/Soundit-/tree/project4_doc)
 
 ![Soundit!](/app/assets/images/logo.png)
 
