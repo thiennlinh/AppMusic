@@ -42,6 +42,7 @@ $(".playlists.show").ready ->
 
 	window.player = undefined
 
+	# call api
 	window.onYouTubeIframeAPIReady = ->
 		microposts = $('#video-placeholder').data('microposts')
 		vidId = parse_youtube_id microposts[0]['url']
